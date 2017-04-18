@@ -8,7 +8,8 @@ We are so glad to have you with us today. We put together this workshop to give 
 This is a technical workshop and you're expected to be comfortable writing and understanding code (we will chiefly use Node.js throughout). Also, you're expected to be comfortable around Linux, be able to SSH in and know how to use text editors (such as **vi** or **nano**). Basic understanding of Azure is essential, but not critical.
 
 Please make sure to complete the following prerequisites prior to coming to the workshop
-- (Windows users only): Install [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+- (Windows users only): [Install](http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) PuTTY
+- [Download](https://github.com/Azure/azure-iot-sdk-csharp/releases) Azure IoT Device Explorer (sorry, non-windows users - X-plat tool is coming soon!)  
 - [Activate](https://azure.microsoft.com/en-au/offers/ms-azr-0044p/) a free trial Azure subscription and familiarise yourself with the [Azure Portal](https://portal.azure.com/). Spin up a linux VM, SSH in, resize it and don't forget to tear it or shut it down. Explore how to use keyboard shortcuts - they save time!
 - [Download](http://TBC) the slides for your reference
 
