@@ -25,21 +25,16 @@ Day 2:
 - Wrap-up
 - 🍕🍕🍕
 
+## Getting Started
+Each group will be provided with a Raspberry Pi 3 running Raspbian Jessie, a Texas Instruments(TI) 
+Bluetooth Low Energy (BLE) Sensor Tag, and an Azure Subscription.
+
 We are presenting two labs today, one for **Azure IoT Device Management** and 
-one for the **Azure IoT Gateway SDK**.  The Azure IoT Device Management lab will introduce you to the concepts of Device Twins and Direct Methods. The Azure IoT Gateway SDK lab will introduce you to the open souece SDK for building IoT Gateway devices enabling, for instance, non-internet connected device to send data to Azure IoT. 
+one for the **Azure IoT Gateway SDK**.  The Azure IoT Device Management lab will introduce you to the concepts of Device Twins and Direct Methods. The Azure IoT Gateway SDK lab will introduce you to the open source SDK for building IoT Gateway devices enabling, for instance, non-internet connected device to send data to Azure IoT. 
 
 > Proctors are available to help you work through these workshops, answer questions or talk tech.
 
-## Getting Started
-Each group will be provided with a Raspberry Pi 3 running Raspbian Jessie, a Texas Instruments(TI) 
-Bluetooth Low Energy (BLE) Sensor Tag, and an Azure Subscription.  
-
-- All required code packages noted below have been pre-loaded and/or built for 
-your convenience; so you may skip running any commands for setting up the Raspberry Pi dependencies.  
-- You'll find 
-the Azure IoT Hub SDK, Azure IoT Gateway SDK and our bonus IoT Sample library on your Pi in the home directory(`~/code`) of the `pi` user.
-- All required Node.js packages have been installed globally. If you have any issues with npm packages, you can link them directly by executing the following command: `npm link {packageName}`
-- The Azure IoT Gateway SDK has been built with the Node.js bindings. .NET and Java are also available, but we will not be touching on those today.  
+Your Raspberry Pis comes with a stock standard version of Raspbian. Whilst you can skip the 'Installing Raspbian' sections in the labs, you will need to clone and compile the SDKs.
 
 ## Azure IoT Device Management Lab
 
@@ -49,6 +44,8 @@ This lab will demonstrate the **Device Twins** and **Direct Methods** features a
 
 > Please make sure you synchronise the time by running `sudo apt-get -y install ntp ntpdate ; sudo service ntp stop; sudo ntpdate 0.ubuntu.pool.ntp.org; sudo service ntp start`
 
+> Your Raspberry Pis comes with a stock standard version of Raspbian, please skip over the instructions to install Raspbian in the lab
+
 ## Azure IoT Gateway SDK Lab 
 
 This lab will demonstrate the open source **Azure IoT Gateway SDK** using a Bluetooth Low Energy (BLE) Sensor Tag, Raspberry Pi and Node.js.
@@ -56,8 +53,10 @@ This lab will demonstrate the open source **Azure IoT Gateway SDK** using a Blue
 The Azure IoT Gateway SDK lab is available [here](iot-hub-gateway-sdk-physical-device.md).
 
 
->Please read the architectural introduction before jumping to the "Enable connectivity to the Sensor Tag device from your Raspberry Pi 3 device"
+> Please read the architectural introduction before jumping to the "Enable connectivity to the Sensor Tag device from your Raspberry Pi 3 device"
 section to configure your TI BLE Sensor Tag.
+
+> Your Raspberry Pis comes with a stock standard version of Raspbian, please skip over the instructions to install Raspbian in the lab.
 
 ## Bonus Challenges
 
