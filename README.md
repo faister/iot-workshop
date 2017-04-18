@@ -62,8 +62,20 @@ section to configure your TI BLE Sensor Tag.
 
 You are likely an overachiever, so we've included a few extra challenges!  Please make sure you complete the [Azure IoT Gateway SDK lab](iot-hub-gateway-sdk-physical-device.md) first.
 
-> Note: Your Raspberry Pi has been setup with the required tooling 
-to run the [Azure IoT Gateway SDK Examples in Node.js](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/nodejs_how_to.md#linux-1).
+### Create an Azure Stream Analytics Query
+- Create an Azure Stream Analytics query that selects all the data from your 
+Event Hub and outputs the results to Power BI, displaying aggregate metrics and sending alert emails or texts (e.g. when temperature exceeds 37 degrees for longer that 15 consecutive seconds). Experiment with the ASA windowing functions and Azure Logic Apps to achieve it.
+
+### Create a Power BI Dashboard
+- Create a [Power BI](http://app.powerbi.com) Dashboard that visualizes your TI Sensor Tag data in creative ways.  Feel free to use any of the Power BI Custom Visuals available [here](https://store.office.com/en-us/appshome.aspx?productgroup=PowerBI). You can learn how to create Power BI Dashboards from a Stream Analytics Output [here](https://azure.microsoft.com/en-us/documentation/articles/stream-analytics-power-bi-dashboard/).
+
+### Create an Azure Function to Decompress & Shred Messages
+- Wire up an Azure Function using your IoT Hub's Event Hub endpoint and utilize 
+the IoT Samples -> DecompressShred -> NodeJs Azure Function to decompress and 
+shred your IoT Hub messages, posting each individual message to an Event Hub for 
+processing by Azure Stream Analytics.
+
+Note: Before proceeding with the following Node.js challenges, please enable Node.js module development by [following the instructions](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/README.md).
 
 ### Manually Batching Messages
 - Create a Node.js Module that concatenates messages from the `node_sensor` using 
@@ -75,16 +87,3 @@ the Gateway's internal message bus.
 
 ### Implement an IoT Hub Writer
 - Copy and configure the IoT Writer Node.js from the Azure IoT Gateway SDK Sample Project [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/nodejs_modules/iothub_writer.js).
-
-### Create an Azure Function to Decompress & Shred Messages
-- Wire up an Azure Function using your IoT Hub's Event Hub endpoint and utilize 
-the IoT Samples -> DecompressShred -> NodeJs Azure Function to decompress and 
-shred your IoT Hub messages, posting each individual message to an Event Hub for 
-processing by Azure Stream Analytics.
-
-### Create an Azure Stream Analytics Query
-- Create an Azure Stream Analytics query that simply selects all the data from your 
-Event Hub and outputs the results to Power BI, displaying aggregate metrics.
-
-### Create a Power BI Dashboard
-- Create a [Power BI](http://app.powerbi.com) Dashboard that visualizes your TI Sensor Tag data in creative ways.  Feel free to use any of the Power BI Custom Visuals available [here](https://store.office.com/en-us/appshome.aspx?productgroup=PowerBI). You can learn how to create Power BI Dashboards from a Stream Analytics Output [here](https://azure.microsoft.com/en-us/documentation/articles/stream-analytics-power-bi-dashboard/).
