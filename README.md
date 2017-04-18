@@ -1,18 +1,27 @@
-# MVP Summit 2016 IoT Workshop 
+# IoT Workshop 2017 - Australia 
 
-Welcome to the MVP Summit 2016 IoT Workshop! 
+Welcome to our workshop! 
 
+We are so glad to have you with us today. We put together this workshop to give you some hands-on experience with the Microsoft Azure IoT suite. Our goal is to get you up-to-speed on the latest developments so you can take the knowledge back to your office and start implementing IoT solutions with them.
 
+## Agenda
+Day 1: 
+- Azure IoT Suite: Level 300 intro 
+- Environment setup: azure subscription, SSH access to your Raspberry PI
+- Lab 1: Azure IoT Device Management
 
-We are so glad to have you with us today. We put together this workshop to share some new and exciting features coming to Azure IoT. Our goal is to get you up-to-speed on the latest developments so you can take the knowledge back to your office and start implementing IoT solutions with them.
+Day 2:
+- Lab 1: Azure IoT Device Management
+- Lab 2: Azure IoT Gateway SDK
+- Wrap-up
 
 We are presenting two labs today, one for **Azure IoT Device Management** and 
-one for the **Azure IoT Gateway SDK**.  The Azure IoT Device Management lab will introduce you to the new Device Twins and Direct Methods. The Azure IoT Gateway SDK lab will introduce you to our brand new SDK for building IoT Gateway devices that enables non-internet connected device to send data to Azure IoT. 
+one for the **Azure IoT Gateway SDK**.  The Azure IoT Device Management lab will introduce you to the concepts of Device Twins and Direct Methods. The Azure IoT Gateway SDK lab will introduce you to the open souece SDK for building IoT Gateway devices enabling, for instance, non-internet connected device to send data to Azure IoT. 
 
-> Proctors from DX and Azure IoT are available to help you work through these workshops, answer questions or talk tech.
+> Proctors are available to help you work through these workshops, answer questions or talk tech.
 
 ## Getting Started
-Each workshop participant has been provided with a Raspberry Pi 3, a pre-configured MicroSD card, a Texas Instruments(TI) 
+Each group has been provided with a Raspberry Pi 3 running RASPBIAN JESSIE, a Texas Instruments(TI) 
 Bluetooth Low Energy (BLE) Sensor Tag, and an Azure Subscription.  
 
 - All required code packages noted below have been pre-loaded and/or built for 
