@@ -1,12 +1,16 @@
 # IoT Workshop 2017 - Australia 
 
-Welcome to our workshop! 
+Welcome to our IoT workshop! 
 
 We are so glad to have you with us today. We put together this workshop to give you some hands-on experience with the Microsoft Azure IoT suite. Our goal is to get you up-to-speed on the latest developments so you can take the knowledge back to your office and start implementing IoT solutions with them.
 
-## Prerequisites and Materials
-TBC
+## Prerequisites and Course Materials
+This is a technical workshop and you're expected to be comfortable writing and understanding code (we will chiefly use Node.js throughout). Also, you're expected to be comfortable around Linux, be able to SSH in and know how to use text editors (such as **vi** or **nano**). Basic understanding of Azure is essential, but not critical.
 
+Please make sure to complete the following prerequisites prior to coming to the workshop
+- (Windows users only): Install [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+- [Activate](https://azure.microsoft.com/en-au/offers/ms-azr-0044p/) a free trial Azure subscription and familiarise yourself with the [Azure Portal](https://portal.azure.com/). Spin up a linux VM, SSH in, resize it and don't forget to tear it or shut it down. Explore how to use keyboard shortcuts - they save time!
+- [Download](http://TBC) the slides for your reference
 
 ## Agenda
 Day 1: 
