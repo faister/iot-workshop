@@ -4,10 +4,14 @@ Welcome to our workshop!
 
 We are so glad to have you with us today. We put together this workshop to give you some hands-on experience with the Microsoft Azure IoT suite. Our goal is to get you up-to-speed on the latest developments so you can take the knowledge back to your office and start implementing IoT solutions with them.
 
+## Prerequisites and Materials
+TBC
+
+
 ## Agenda
 Day 1: 
 - Azure IoT Suite: Level 300 intro 
-- Environment setup: azure subscription, SSH access to your Raspberry PI
+- Environment setup: azure subscription, SSH access to your Raspberry PI, set up prerequisites
 - Lab 1: Azure IoT Device Management
 
 Day 2:
@@ -21,7 +25,7 @@ one for the **Azure IoT Gateway SDK**.  The Azure IoT Device Management lab will
 > Proctors are available to help you work through these workshops, answer questions or talk tech.
 
 ## Getting Started
-Each group has been provided with a Raspberry Pi 3 running RASPBIAN JESSIE, a Texas Instruments(TI) 
+Each group has been provided with a Raspberry Pi 3 running Raspbian Jessie, a Texas Instruments(TI) 
 Bluetooth Low Energy (BLE) Sensor Tag, and an Azure Subscription.  
 
 - All required code packages noted below have been pre-loaded and/or built for 
@@ -33,14 +37,14 @@ the Azure IoT Hub SDK, Azure IoT Gateway SDK and our bonus IoT Sample library on
 
 ## Azure IoT Device Management Lab
 
-This lab will bring you through the new **Device Twins** and **Direct Methods** features. 
+This lab will demonstrate the **Device Twins** and **Direct Methods** features. 
 
 The Azure IoT Device Management lab is available [here](https://github.com/Azure/azure-iot-sdks/tree/mvp_summit/c/serializer/samples/devicetwin_configupdate#how-to-update-configuration-and-reboot-an-iot-device-with-azure-iot-device-twins). 
 
 
 ## Azure IoT Gateway SDK Lab 
 
-This lab will bring you through the new **Azure IoT Gateway SDK** using a Bluetooth Low Energy (BLE) Sensor Tag, Raspberry Pi and Node.js.
+This lab will demonstrate the open source **Azure IoT Gateway SDK** using a Bluetooth Low Energy (BLE) Sensor Tag, Raspberry Pi and Node.js.
 
 The Azure IoT Gateway SDK lab is available [here](iot-hub-gateway-sdk-physical-device.md).
 
@@ -50,7 +54,7 @@ section to configure your TI BLE Sensor Tag.
 
 ## Bonus Challenges
 
-You are likely an overachiever, so we've included a few extra challenges!  Please make sure you complete the Azure IoT Gateway SDK lab first.
+You are likely an overachiever, so we've included a few extra challenges!  Please make sure you complete the [Azure IoT Gateway SDK lab](iot-hub-gateway-sdk-physical-device.md) first.
 
 > Note: Your Raspberry Pi has been setup with the required tooling 
 to run the [Azure IoT Gateway SDK Examples in Node.js](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/nodejs_how_to.md#linux-1).
@@ -77,4 +81,4 @@ processing by Azure Stream Analytics.
 Event Hub and outputs the results to Power BI, displaying aggregate metrics.
 
 ### Create a Power BI Dashboard
-- Create a [Power BI](http://app.powerbi.com) Dashboard that visualizes your TI Sensor Tag data in creative ways.  Feel free to use any of the Power BI Custom Visuals available [here](http://visuals.powerbi.com). You can learn how to create Power BI Dashboards from a Stream Analytics Output [here](https://azure.microsoft.com/en-us/documentation/articles/stream-analytics-power-bi-dashboard/).
+- Create a [Power BI](http://app.powerbi.com) Dashboard that visualizes your TI Sensor Tag data in creative ways.  Feel free to use any of the Power BI Custom Visuals available [here](https://store.office.com/en-us/appshome.aspx?productgroup=PowerBI). You can learn how to create Power BI Dashboards from a Stream Analytics Output [here](https://azure.microsoft.com/en-us/documentation/articles/stream-analytics-power-bi-dashboard/).
