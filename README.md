@@ -29,7 +29,7 @@ one for the **Azure IoT Gateway SDK**.  The Azure IoT Device Management lab will
 > Proctors are available to help you work through these workshops, answer questions or talk tech.
 
 ## Getting Started
-Each group has been provided with a Raspberry Pi 3 running Raspbian Jessie, a Texas Instruments(TI) 
+Each group will be provided with a Raspberry Pi 3 running Raspbian Jessie, a Texas Instruments(TI) 
 Bluetooth Low Energy (BLE) Sensor Tag, and an Azure Subscription.  
 
 - All required code packages noted below have been pre-loaded and/or built for 
