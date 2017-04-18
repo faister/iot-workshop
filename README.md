@@ -11,7 +11,7 @@ Please make sure to complete the following prerequisites prior to coming to the 
 - [Install](http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) PuTTY (Windows users only)
 - [Download](https://github.com/Azure/azure-iot-sdk-csharp/releases) Azure IoT Device Explorer (Windows only) or [Install](https://github.com/Azure/azure-iot-sdks/blob/mvp_summit/doc/manage_iot_hub.md#iothub-explorer) a command line utility  
 - [Activate](https://azure.microsoft.com/en-au/offers/ms-azr-0044p/) a free trial Azure subscription and familiarise yourself with the [Azure Portal](https://portal.azure.com/). Spin up a linux VM, SSH in, resize it and don't forget to tear it or shut it down. Explore how to use keyboard shortcuts - they save time!
-- [Download](http://TBC) the slides for your reference
+- [Download](media/slides-final-abridged.zip) the Level 300 slides for your reference
 
 ## Agenda
 Day 1: 
