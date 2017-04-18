@@ -75,7 +75,7 @@ the IoT Samples -> DecompressShred -> NodeJs Azure Function to decompress and
 shred your IoT Hub messages, posting each individual message to an Event Hub for 
 processing by Azure Stream Analytics.
 
-Note: Before proceeding with the following Node.js challenges, please enable Node.js module development by [following the instructions](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/README.md).
+> Note: Before proceeding with the following Node.js challenges, please enable Node.js module development by [following the instructions](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/README.md).
 
 ### Manually Batching Messages
 - Create a Node.js Module that concatenates messages from the `node_sensor` using 
