@@ -206,7 +206,8 @@ At the time of writing, the IoT Gateway SDK only supports gateways that use BLE 
 Install dependancies for the Azure IoT Gateway SDK.
 
 ``` 
-sudo apt-get install cmake uuid-dev curl libcurl4-openssl-dev libssl-dev
+sudo apt-get -y install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev libtool autoconf
+
 ```
 Use the following commands to clone the IoT Gateway SDK and all its submodules to your home directory:
 
@@ -220,7 +221,7 @@ git submodule update --init --recursive
 When you have a complete copy of the IoT Gateway SDK repository on your Raspberry Pi 3, you can build it using the following command from the folder that contains the SDK:
 
 ```
-./tools/build.sh --skip-unittests --skip-e2e-tests
+./tools/build.sh
 ```
 
 ### Configure and Run the BLE Sample on your Raspberry Pi 3
