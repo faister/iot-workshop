@@ -8,8 +8,8 @@ We are so glad to have you with us today. We put together this workshop to give 
 This is a technical workshop and you're expected to be comfortable writing and understanding code (we will chiefly use Node.js throughout). Also, you're expected to be comfortable around Linux, be able to SSH in and know how to use text editors (such as **vi** or **nano**). Basic understanding of Azure is essential, but not critical.
 
 Please make sure to complete the following prerequisites prior to coming to the workshop
-- (Windows users only): [Install](http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) PuTTY
-- [Download](https://github.com/Azure/azure-iot-sdk-csharp/releases) Azure IoT Device Explorer (sorry, non-windows users - X-plat tool is coming soon!)  
+- [Install](http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) PuTTY (Windows users only)
+- [Download](https://github.com/Azure/azure-iot-sdk-csharp/releases) Azure IoT Device Explorer (sorry non-windows users, a X-plat tool is coming soon!)  
 - [Activate](https://azure.microsoft.com/en-au/offers/ms-azr-0044p/) a free trial Azure subscription and familiarise yourself with the [Azure Portal](https://portal.azure.com/). Spin up a linux VM, SSH in, resize it and don't forget to tear it or shut it down. Explore how to use keyboard shortcuts - they save time!
 - [Download](http://TBC) the slides for your reference
 
@@ -20,9 +20,10 @@ Day 1:
 - Lab 1: Azure IoT Device Management
 
 Day 2:
-- Lab 1: Azure IoT Device Management
 - Lab 2: Azure IoT Gateway SDK
+- Bonus Challenges
 - Wrap-up
+- 🍕🍕🍕
 
 We are presenting two labs today, one for **Azure IoT Device Management** and 
 one for the **Azure IoT Gateway SDK**.  The Azure IoT Device Management lab will introduce you to the concepts of Device Twins and Direct Methods. The Azure IoT Gateway SDK lab will introduce you to the open souece SDK for building IoT Gateway devices enabling, for instance, non-internet connected device to send data to Azure IoT. 
