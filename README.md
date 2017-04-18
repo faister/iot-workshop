@@ -47,7 +47,7 @@ This lab will demonstrate the **Device Twins** and **Direct Methods** features a
 
 > Please make sure you set the correct timezone by running `sudo raspi-config`
 
-> Please make sure you synchronise the time by running `sudo ntpd -gq`
+> Please make sure you synchronise the time by running `sudo apt-get -y install ntp ntpdate ; sudo service ntp stop; sudo ntpdate 0.ubuntu.pool.ntp.org; sudo service ntp start`
 
 ## Azure IoT Gateway SDK Lab 
 
