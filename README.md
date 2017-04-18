@@ -46,6 +46,7 @@ the Azure IoT Hub SDK, Azure IoT Gateway SDK and our bonus IoT Sample library on
 This lab will demonstrate the **Device Twins** and **Direct Methods** features and is available [here](https://github.com/Azure/azure-iot-sdks/tree/mvp_summit/c/serializer/samples/devicetwin_configupdate#how-to-update-configuration-and-reboot-an-iot-device-with-azure-iot-device-twins). 
 
 > Please make sure you set the correct timezone by running `sudo raspi-config`
+
 > Please make sure you synchronise the time by running `sudo ntpd -gq`
 
 ## Azure IoT Gateway SDK Lab 
