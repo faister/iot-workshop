@@ -225,9 +225,9 @@ When you have a complete copy of the IoT Gateway SDK repository on your Raspberr
 ```
 
 ### Configure and Run the BLE Sample on your Raspberry Pi 3
-To bootstrap and run the sample, you need to configure each module that participates in the gateway. This configuration is provided in a JSON file and you need to configure all five participating modules. There is a sample JSON file provided in the repository called **gateway_sample.json** which you can use as the starting point for building your own configuration file. This file is in the **samples/ble_gateway/src** folder in local copy of the IoT Gateway SDK repository.
+To bootstrap and run the sample, you need to configure each module that participates in the gateway. This configuration is provided in a JSON file and you need to configure all five participating modules. There is a sample JSON file provided in the repository called **gateway_sample.json** which you can use as the starting point for building your own configuration file. This file is in the **/home/pi/azure-iot-gateway-sdk/samples/ble_gateway/src** folder in local copy of the IoT Gateway SDK repository.
 
-The following sections describe how to edit this configuration file for the BLE sample and assume that the IoT Gateway SDK repository is in the **/home/pi/code/azure-iot-gateway-sdk/** folder on your Raspberry Pi 3. If the repository is elsewhere, you should adjust the paths accordingly:
+The following sections describe how to edit this configuration file for the BLE sample and assume that the IoT Gateway SDK repository is in the **/home/pi/azure-iot-gateway-sdk/** folder on your Raspberry Pi 3. If the repository is elsewhere, you should adjust the paths accordingly:
 
 #### Logger Configuration
 Assuming the gateway repository is located in the home folder, configure the logger module as follows:
@@ -386,6 +386,7 @@ The following configuration ensures the following:
 To run the sample, pass the path to the JSON configuration file to the **ble_gateway** binary. If you used the **gateway_sample.json** file, the command is below. Execute this command from the azure-iot-gateway-sdk directory
 
 ```
+cd ~pi/azure-iot-gateway-sdk/
 ./build/samples/ble_gateway/ble_gateway ./samples/ble_gateway/src/gateway_sample.json
 ```
 
