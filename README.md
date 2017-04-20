@@ -34,17 +34,23 @@ one for the **Azure IoT Gateway SDK**.  The Azure IoT Device Management lab will
 
 > Proctors are available to help you work through these workshops, answer questions or talk tech.
 
-Your Raspberry Pis comes with a stock standard version of Raspbian. Whilst you can skip the 'Installing Raspbian' sections in the labs, you will need to clone and compile the SDKs.
+Your Raspberry Pis comes with a stock standard version of Raspbian, with the SDKs preloaded, compiled and located in:
+- Device SDK: `/home/pi/azure-iot-sdks`
+- Gateway SDK: `/home/pi/azure-iot-gateway-sdk`
+
+To save time, you can skip all sections to do with installing raspbian, cloning git repos and compiling SDKs.
 
 ## Azure IoT Device Management Lab
 
 This lab will demonstrate the **Device Twins** and **Direct Methods** features and is available [here](https://github.com/Azure/azure-iot-sdks/tree/mvp_summit/c/serializer/samples/devicetwin_configupdate#how-to-update-configuration-and-reboot-an-iot-device-with-azure-iot-device-twins). 
 
+Device SDK location: `/home/pi/azure-iot-sdks`
+
+> The SDK (github repo) has been cloned and is located here: `/home/pi/azure-iot-sdks`. In the interest of time, **Step 1: Prerequisites**, **Step 2: Prepare Device** and the `git clone` step in **Step 3: Build and Run the Device Twins Sample** can be skipped.
+
 > Please make sure you set the correct timezone by running `sudo raspi-config`
 
-> Please make sure you synchronise the time by running `sudo apt-get -y install ntp ntpdate ; sudo service ntp stop; sudo ntpdate 0.ubuntu.pool.ntp.org; sudo service ntp start`
-
-> Your Raspberry Pis comes with a stock standard version of Raspbian, please skip over the instructions to install Raspbian in the lab
+> Please make sure the time is synchronised by running `sudo apt-get -y install ntp ntpdate ; sudo service ntp stop; sudo ntpdate 0.ubuntu.pool.ntp.org; sudo service ntp start`
 
 ## Azure IoT Gateway SDK Lab 
 
