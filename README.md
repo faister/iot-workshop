@@ -57,8 +57,7 @@ This lab will demonstrate the open source **Azure IoT Gateway SDK** using a Blue
 The Azure IoT Gateway SDK lab is available [here](iot-hub-gateway-sdk-physical-device.md).
 
 
-> Please read the architectural introduction before jumping to the "Enable connectivity to the Sensor Tag device from your Raspberry Pi 3 device"
-section to configure your TI BLE Sensor Tag.
+> Please read the architectural introduction before jumping to the "Enable connectivity to the Sensor Tag device from your Raspberry Pi 3 device" section to configure your TI BLE Sensor Tag.
 
 > Your Raspberry Pis comes with a stock standard version of Raspbian, please skip over the instructions to install Raspbian in the lab.
 
@@ -66,9 +65,11 @@ section to configure your TI BLE Sensor Tag.
 
 You are likely an overachiever, so we've included a few extra challenges!  Please make sure you complete the [Azure IoT Gateway SDK lab](iot-hub-gateway-sdk-physical-device.md) first.
 
+### Decode Messages
+- Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert binary temperature readings coming from the SensorTag and publishes them to an Event Hub for further processing.
+
 ### Create an Azure Stream Analytics Query
-- Create an Azure Stream Analytics query that selects all the data from your 
-Event Hub and outputs the results to Power BI, displaying aggregate metrics and sending alert emails or texts (e.g. when temperature exceeds 37 degrees for longer that 15 consecutive seconds). Experiment with the ASA windowing functions and Azure Logic Apps to achieve it.
+- Create an Azure Stream Analytics query that selects all the data from your Event Hub and outputs the results to Power BI, displaying aggregate metrics and sending alert emails or texts (e.g. when temperature exceeds 37 degrees for longer that 15 consecutive seconds). Experiment with the ASA windowing functions and Azure Logic Apps to achieve it.
 
 ### Create a Power BI Dashboard
 - Create a [Power BI](http://app.powerbi.com) Dashboard that visualizes your TI Sensor Tag data in creative ways.  Feel free to use any of the Power BI Custom Visuals available [here](https://store.office.com/en-us/appshome.aspx?productgroup=PowerBI). You can learn how to create Power BI Dashboards from a Stream Analytics Output [here](https://azure.microsoft.com/en-us/documentation/articles/stream-analytics-power-bi-dashboard/).
@@ -76,16 +77,13 @@ Event Hub and outputs the results to Power BI, displaying aggregate metrics and 
 > Note: Before proceeding with the following Node.js challenges, please enable Node.js module development by [following the instructions](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/README.md#linux).
 
 ### Manually Batching Messages
-- Create a Node.js Module that concatenates messages from the `node_sensor` using 
-a `|` delimiter and then posts them to the Gateway's internal message bus. 
+- Create a Node.js Module that concatenates messages from the `node_sensor` using a `|` delimiter and then posts them to the Gateway's internal message bus. 
 
 ### Compress Batched Messages  
-- Develop a Node.js Module that compresses the batched messages and posts them to 
-the Gateway's internal message bus.
+- Develop a Node.js Module that compresses the batched messages and posts them to the Gateway's internal message bus.
 
 ### Create an Azure Function to Decompress & Shred Messages
-- Wire up an Azure Function using your IoT Hub's Event Hub endpoint and utilize 
-the [IoT Samples -> DecompressShred ](https://github.com/Microsoft/iot-samples/tree/master/DecompressShred) NodeJs Azure Function to decompress and shred your IoT Hub messages, posting each individual message to an Event Hub for 
+- Wire up an Azure Function using your IoT Hub's Event Hub endpoint and utilize the [IoT Samples -> DecompressShred](https://github.com/Microsoft/iot-samples/tree/master/DecompressShred) NodeJs Azure Function to decompress and shred your IoT Hub messages, posting each individual message to an Event Hub for 
 processing by Azure Stream Analytics.
 
 ### Implement an IoT Hub Writer
