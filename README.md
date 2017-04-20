@@ -73,12 +73,6 @@ Event Hub and outputs the results to Power BI, displaying aggregate metrics and 
 ### Create a Power BI Dashboard
 - Create a [Power BI](http://app.powerbi.com) Dashboard that visualizes your TI Sensor Tag data in creative ways.  Feel free to use any of the Power BI Custom Visuals available [here](https://store.office.com/en-us/appshome.aspx?productgroup=PowerBI). You can learn how to create Power BI Dashboards from a Stream Analytics Output [here](https://azure.microsoft.com/en-us/documentation/articles/stream-analytics-power-bi-dashboard/).
 
-### Create an Azure Function to Decompress & Shred Messages
-- Wire up an Azure Function using your IoT Hub's Event Hub endpoint and utilize 
-the IoT Samples -> DecompressShred -> NodeJs Azure Function to decompress and 
-shred your IoT Hub messages, posting each individual message to an Event Hub for 
-processing by Azure Stream Analytics.
-
 > Note: Before proceeding with the following Node.js challenges, please enable Node.js module development by [following the instructions](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/README.md#linux).
 
 ### Manually Batching Messages
@@ -89,5 +83,12 @@ a `|` delimiter and then posts them to the Gateway's internal message bus.
 - Develop a Node.js Module that compresses the batched messages and posts them to 
 the Gateway's internal message bus.
 
+### Create an Azure Function to Decompress & Shred Messages
+- Wire up an Azure Function using your IoT Hub's Event Hub endpoint and utilize 
+the [IoT Samples -> DecompressShred ](https://github.com/Microsoft/iot-samples/tree/master/DecompressShred) NodeJs Azure Function to decompress and shred your IoT Hub messages, posting each individual message to an Event Hub for 
+processing by Azure Stream Analytics.
+
 ### Implement an IoT Hub Writer
 - Copy and configure the IoT Writer Node.js from the Azure IoT Gateway SDK Sample Project [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/nodejs_modules/iothub_writer.js).
+
+
