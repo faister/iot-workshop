@@ -195,7 +195,7 @@ To run the BLE sample, you need to complete three tasks:
 
 At the time of writing, the IoT Gateway SDK only supports gateways that use BLE modules on Linux.
 
-### Configure Two Sample Devices in your IoT Hub
+### Configure A Sample Device in your IoT Hub
 * [Create an IoT hub][lnk-create-hub] in your Azure subscription, you will need the name of your hub to complete this lab. If you don't have an account, you can ask a proctor to assign you one.
 * Add one device called **SensorTag_01** to your IoT hub and make a note of its id and device key. You can use the [Device Explorer or iothub-explorer][lnk-explorer-tools] tools to add this device to the IoT hub you created in the previous step and to retrieve its key. You will map this device to the SensorTag device when you configure the gateway.
 
@@ -338,6 +338,36 @@ Add the MAC address of your SensorTag device and the device Id and key of the **
 }
 ```
 
+### BLE Printer module configuration
+
+```json
+{
+  "name": "BLE Printer",
+  "loader": {
+    "name" : "native",
+    "entrypoint" : {
+      "module.path": "build/samples/ble_gateway/ble_printer/libble_printer.so"
+    }
+  },
+  "args": null
+}
+```
+
+### BLEC2D module configuration
+
+```json
+{
+  "name": "BLEC2D",
+  "loader": {
+    "name" : "native",
+    "entrypoint" : {
+      "module.path": "build/modules/ble/libble_c2d.so"
+    }
+  },
+  "args": null
+}
+```
+
 #### Routing Configuration
 The following configuration ensures the following:
 
@@ -379,47 +409,22 @@ If you are using the Texas Instruments SensorTag device then you can turn on the
 1 Reset all LEDs and the buzzer (turn them off)
   
 ```json
-{
-"type": "write_once",
-"characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
-"data": "AA=="
-}
+{"type": "write_once","characteristic_uuid": "F000AA65-0451-4000-B000-000000000000","data": "AA=="}
 ```
 2 Configure I/O as 'remote'
   
 ```json
-{
-"type": "write_once",
-"characteristic_uuid": "F000AA66-0451-4000-B000-000000000000",
-"data": "AQ=="
-}
+{"type": "write_once","characteristic_uuid": "F000AA66-0451-4000-B000-000000000000","data": "AQ=="}
 ```
 * Turn on the red LED
   
 ```json
-{
-"type": "write_once",
-"characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
-"data": "AQ=="
-}
+{"type": "write_once","characteristic_uuid": "F000AA65-0451-4000-B000-000000000000","data": "AQ=="}
 ```
 * Turn on the green LED
   
 ```json
-{
-"type": "write_once",
-"characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
-"data": "Ag=="
-}
-```
-* Turn on the buzzer
-  
-```json
-{
-"type": "write_once",
-"characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
-"data": "BA=="
-}
+{"type": "write_once","characteristic_uuid": "F000AA65-0451-4000-B000-000000000000","data": "Ag=="}
 ```
 
 ## Next Steps
