@@ -338,28 +338,6 @@ Add the MAC address of your SensorTag device and the device Id and key of the **
 }
 ```
 
-#### BLEPrinter Module Configuration
-```json
-{
-    "module name": "BLEPrinter",
-    "loading args": {
-      "module path": "build/samples/ble_gateway/ble_printer/libble_printer.so"
-    },
-    "args": null
-}
-```
-
-#### BLEC2D Module Configuration
-```json
-{
-    "module name": "BLEC2D",
-    "loading args": {
-      "module path": "build/modules/ble/libble_c2d.so"
-    },
-    "args": null
-}
-```
-
 #### Routing Configuration
 The following configuration ensures the following:
 
@@ -375,7 +353,7 @@ The following configuration ensures the following:
 "links" : [
     {"source" : "*", "sink" : "Logger" },
     {"source" : "SensorTag", "sink" : "mapping" },
-    {"source" : "SensorTag", "sink" : "BLEPrinter" },
+    {"source" : "SensorTag", "sink" : "BLE Printer" },
     {"source" : "mapping", "sink" : "IoTHub" },
     {"source" : "IoTHub", "sink" : "mapping" },
     {"source" : "mapping", "sink" : "BLEC2D" },
@@ -400,49 +378,49 @@ If you are using the Texas Instruments SensorTag device then you can turn on the
 
 1 Reset all LEDs and the buzzer (turn them off)
   
-    ```json
-    {
-      "type": "write_once",
-      "characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
-      "data": "AA=="
-    }
-    ```
+```json
+{
+"type": "write_once",
+"characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
+"data": "AA=="
+}
+```
 2 Configure I/O as 'remote'
   
-    ```json
-    {
-      "type": "write_once",
-      "characteristic_uuid": "F000AA66-0451-4000-B000-000000000000",
-      "data": "AQ=="
-    }
-    ```
+```json
+{
+"type": "write_once",
+"characteristic_uuid": "F000AA66-0451-4000-B000-000000000000",
+"data": "AQ=="
+}
+```
 * Turn on the red LED
   
-    ```json
-    {
-      "type": "write_once",
-      "characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
-      "data": "AQ=="
-    }
-    ```
+```json
+{
+"type": "write_once",
+"characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
+"data": "AQ=="
+}
+```
 * Turn on the green LED
   
-    ```json
-    {
-      "type": "write_once",
-      "characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
-      "data": "Ag=="
-    }
-    ```
+```json
+{
+"type": "write_once",
+"characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
+"data": "Ag=="
+}
+```
 * Turn on the buzzer
   
-    ```json
-    {
-      "type": "write_once",
-      "characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
-      "data": "BA=="
-    }
-    ```
+```json
+{
+"type": "write_once",
+"characteristic_uuid": "F000AA65-0451-4000-B000-000000000000",
+"data": "BA=="
+}
+```
 
 ## Next Steps
 If you want to gain a more advanced understanding of the IoT Gateway SDK and experiment with some code examples, visit the following developer tutorials and resources:
