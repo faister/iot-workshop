@@ -44,7 +44,7 @@ To save time, you can skip all sections to do with installing raspbian, cloning 
 
 This lab will demonstrate the **Device Twins** and **Direct Methods** features and is available [here](https://github.com/Azure/azure-iot-sdks/tree/mvp_summit/c/serializer/samples/devicetwin_configupdate#how-to-update-configuration-and-reboot-an-iot-device-with-azure-iot-device-twins). 
 
-The Device SDK GitHub repo has been cloned and is located here: `/home/pi/azure-iot-sdks`. In the interest of time, **Step 1: Prerequisites**, **Step 2: Prepare Device** and the `git clone` step in **Step 3: Build and Run the Device Twins Sample** can be skipped.
+The Device SDK GitHub repo has been cloned to `/home/pi/azure-iot-sdks/`. In the interest of time, **Step 1: Prerequisites**, **Step 2: Prepare Device** and the `git clone` step in **Step 3: Build and Run the Device Twins Sample** can be skipped.
 
 > Please make sure you set the correct timezone by running `sudo raspi-config`
 
@@ -59,7 +59,7 @@ The Azure IoT Gateway SDK lab is available [here](iot-hub-gateway-sdk-physical-d
 
 > Please read the architectural introduction before jumping to the "Enable connectivity to the Sensor Tag device from your Raspberry Pi 3 device" section to configure your TI BLE Sensor Tag.
 
-> Your Raspberry Pis comes with a stock standard version of Raspbian, please skip over the instructions to install Raspbian in the lab.
+The Azure IoT Gateway SDK GitHub repo has been cloned to `/home/pi/azure-iot-gateway-sdk` and compiled. Steps that can be skipped are called out in the lab.
 
 ## Bonus Challenges
 
