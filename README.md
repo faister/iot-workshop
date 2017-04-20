@@ -66,7 +66,7 @@ The Azure IoT Gateway SDK GitHub repo has been cloned to `/home/pi/azure-iot-gat
 You are likely an overachiever, so we've included a few extra challenges!  Please make sure you complete the [Azure IoT Gateway SDK lab](iot-hub-gateway-sdk-physical-device.md) first.
 
 ### Decode Messages
-- Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert binary temperature readings coming from the SensorTag and publishes them to an Event Hub for further processing.
+- Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert binary temperature readings coming from the SensorTag and publish them to an Event Hub for further processing.
 
 ### Create an Azure Stream Analytics Query
 - Create an Azure Stream Analytics query that selects all the data from your Event Hub and outputs the results to Power BI, displaying aggregate metrics and sending alert emails or texts (e.g. when temperature exceeds 37 degrees for longer that 15 consecutive seconds). Experiment with the ASA windowing functions and Azure Logic Apps to achieve it.
