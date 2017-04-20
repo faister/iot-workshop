@@ -44,9 +44,7 @@ To save time, you can skip all sections to do with installing raspbian, cloning 
 
 This lab will demonstrate the **Device Twins** and **Direct Methods** features and is available [here](https://github.com/Azure/azure-iot-sdks/tree/mvp_summit/c/serializer/samples/devicetwin_configupdate#how-to-update-configuration-and-reboot-an-iot-device-with-azure-iot-device-twins). 
 
-Device SDK location: `/home/pi/azure-iot-sdks`
-
-> The SDK (github repo) has been cloned and is located here: `/home/pi/azure-iot-sdks`. In the interest of time, **Step 1: Prerequisites**, **Step 2: Prepare Device** and the `git clone` step in **Step 3: Build and Run the Device Twins Sample** can be skipped.
+The Device SDK GitHub repo has been cloned and is located here: `/home/pi/azure-iot-sdks`. In the interest of time, **Step 1: Prerequisites**, **Step 2: Prepare Device** and the `git clone` step in **Step 3: Build and Run the Device Twins Sample** can be skipped.
 
 > Please make sure you set the correct timezone by running `sudo raspi-config`
 
