@@ -38,7 +38,7 @@ Your Raspberry Pis comes with a stock standard version of Raspbian, with the SDK
 - Device SDK: `/home/pi/azure-iot-sdks`
 - Gateway SDK: `/home/pi/azure-iot-gateway-sdk`
 
-To save time, you can skip all sections to do with installing raspbian, cloning git repos and compiling SDKs.
+To save time, please skip all sections to do with installing raspbian, cloning git repos and compiling SDKs. Feel free to [download the Raspbian image](link) we use here and write it to an SD card following [these instructions](https://www.raspberrypi.org/documentation/installation/installing-images/). 
 
 ## Azure IoT Device Management Lab
 
