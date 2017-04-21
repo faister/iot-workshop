@@ -56,17 +56,16 @@ This lab will demonstrate the open source **Azure IoT Gateway SDK** using a Blue
 
 The Azure IoT Gateway SDK lab is available [here](iot-hub-gateway-sdk-physical-device.md).
 
-
 > Please read the architectural introduction before jumping to the "Enable connectivity to the Sensor Tag device from your Raspberry Pi 3 device" section to configure your TI BLE Sensor Tag.
 
-The Azure IoT Gateway SDK GitHub repo has been cloned to `/home/pi/azure-iot-gateway-sdk` and compiled. Steps that can be skipped are called out in the lab.
+The Azure IoT Gateway SDK GitHub repo has been cloned to `/home/pi/azure-iot-gateway-sdk` and compiled. Steps that can be skipped are called out in the lab. The raw data values read from the SensorTag temperature sensor are: die (ambience) temperature and object temperature.
 
 ## Bonus Challenges
 
 You are likely an overachiever, so we've included a few extra challenges!  Please make sure you complete the [Azure IoT Gateway SDK lab](iot-hub-gateway-sdk-physical-device.md) first.
 
-### Decode Messages
-- Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert binary temperature readings coming from the SensorTag and publish them to an Event Hub for further processing.
+### Decode Messages in the Cloud
+- The SensorTag message requires decoding. The raw data values read from this sensor are two unsigned 16 bit values, one for die (ambience) temperature and one for object temperature. Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert temperature readings coming from the SensorTag and publish them to an Event Hub for further processing. Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) to seek answers. 
 
 ### Create an Azure Stream Analytics Query
 - Create an Azure Stream Analytics query that selects all the data from your Event Hub and outputs the results to Power BI, displaying aggregate metrics and sending alert emails or texts (e.g. when temperature exceeds 37 degrees for longer that 15 consecutive seconds). Experiment with the ASA windowing functions and Azure Logic Apps to achieve it.
@@ -74,19 +73,16 @@ You are likely an overachiever, so we've included a few extra challenges!  Pleas
 ### Create a Power BI Dashboard
 - Create a [Power BI](http://app.powerbi.com) Dashboard that visualizes your TI Sensor Tag data in creative ways.  Feel free to use any of the Power BI Custom Visuals available [here](https://store.office.com/en-us/appshome.aspx?productgroup=PowerBI). You can learn how to create Power BI Dashboards from a Stream Analytics Output [here](https://azure.microsoft.com/en-us/documentation/articles/stream-analytics-power-bi-dashboard/).
 
-> Note: Before proceeding with the following Node.js challenges, please enable Node.js module development by [following the instructions](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/README.md#linux).
+> Note: the Gateway SDK has been compiled with support for Node.js modules. Please run the `nodejs_simple_sample` demo [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/README.md#linux-1) first. We recommend you create a new device for it. Due to a [bug](https://github.com/Azure/azure-iot-gateway-sdk/issues/226) the demo is likely to crash. Let's find a way around it, keep reading. 
 
-### Manually Batching Messages
-- Create a Node.js Module that concatenates messages from the `node_sensor` using a `|` delimiter and then posts them to the Gateway's internal message bus. 
+### Let's Make the Sample Work!
+- Let's fix it by replacing the `iothub_writer.js` module written in Node.js with a native device mapper and a native IoT Hub writer (used in the BLE demo). Edit the `gateway_sample_lin.json` file but don't forget to adjust the paths when adding new modules. Generate a random MAC address for the simulated device. 
 
-### Compress Batched Messages  
-- Develop a Node.js Module that compresses the batched messages and posts them to the Gateway's internal message bus.
+### Combine Node.js Simulator With the SensorTag  
+- Add your SensorTag as a second device to the `gateway_sample_lin.json` file.
+
+### Decode Messages in the Gateway
+- The SensorTag message requires decoding. The raw data values read from this sensor are two unsigned 16 bit values, one for die (ambience) temperature and one for object temperature. Build a module to convert these values to a readable format in the gateway. Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) to seek answers. Refer to [Node.js Printer](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/nodejs_modules/printer.js) to understand how to consume messages and to [Node.js Simulated Device](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/nodejs_modules/sensor.js) to get an idea how to publish values. The flow can be be SensorTag -> mapper -> Converter -> IoTHub or SensorTag -> Converter -> mapper -> IoTHub.
 
 ### Create an Azure Function to Decompress & Shred Messages
-- Wire up an Azure Function using your IoT Hub's Event Hub endpoint and utilize the [IoT Samples -> DecompressShred](https://github.com/Microsoft/iot-samples/tree/master/DecompressShred) NodeJs Azure Function to decompress and shred your IoT Hub messages, posting each individual message to an Event Hub for 
-processing by Azure Stream Analytics.
-
-### Implement an IoT Hub Writer
-- Copy and configure the IoT Writer Node.js from the Azure IoT Gateway SDK Sample Project [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/nodejs_modules/iothub_writer.js).
-
-
+- Wire up an Azure Function using your IoT Hub's Event Hub endpoint and utilize the [IoT Samples -> DecompressShred](https://github.com/Microsoft/iot-samples/tree/master/DecompressShred) NodeJs Azure Function to decompress and shred your IoT Hub messages, posting each individual message to an Event Hub for processing by Azure Stream Analytics.
