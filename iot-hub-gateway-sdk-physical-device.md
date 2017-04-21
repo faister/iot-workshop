@@ -189,7 +189,7 @@ You're now ready to run the BLE Gateway sample on your Raspberry Pi 3.
 ## Run the BLE Gateway Sample
 To run the BLE sample, you need to complete three tasks:
 
-* Configure two sample devices in your IoT Hub.
+* Configure a sample device in your IoT Hub.
 * Build the IoT Gateway SDK on your Raspberry Pi 3 device.
 * Configure and run the BLE sample on your Raspberry Pi 3 device.
 
@@ -234,14 +234,17 @@ Assuming the gateway repository is located in the home folder, configure the log
 
 ```json
 {
-    "module name": "logger",
-    "loading args": {
-      "module path": "build/modules/logger/liblogger.so"
-    },
-    "args":
-    {
-        "filename":"gw_logger.log"
+  "name": "Logger",
+  "loader": {
+    "name" : "native",
+    "entrypoint" : {
+      "module.path" : "build/modules/logger/liblogger.so"
     }
+  },
+  "args":
+  {
+    "filename": "<</path/to/log-file.log>>"
+  }
 }
 ```
 
@@ -250,9 +253,12 @@ The sample configuration for the BLE device assumes a Texas Instruments SensorTa
 
 ```json
 {
-  "module name": "SensorTag",
-  "loading args": {
-    "module path": "build/modules/ble/libble.so"
+  "name": "SensorTag",
+  "loader": {
+    "name" : "native",
+    "entrypoint" : {
+      "module.path": "build/modules/ble/libble.so"
+    }
   },
   "args": {
     "controller_index": 0,
@@ -307,14 +313,17 @@ Add the name of your IoT Hub. The suffix value is typically **azure-devices.net*
 
 ```json
 {
-  "module name": "IoTHub",
-  "loading args": {
-    "module path": "build/modules/iothub/libiothub.so"
+  "name": "IoTHub",
+  "loader": {
+    "name" : "native",
+    "entrypoint" : {
+      "module.path": "build/modules/iothub/libiothub.so"
+    }
   },
   "args": {
     "IoTHubName": "<<Azure IoT Hub Name>>",
     "IoTHubSuffix": "<<Azure IoT Hub Suffix>>",
-    "Transport": "AMQP"
+    "Transport" : "amqp"
   }
 }
 ```
@@ -324,9 +333,12 @@ Add the MAC address of your SensorTag device and the device Id and key of the **
 
 ```json
 {
-  "module name": "mapping",
-  "loading args": {
-    "module path": "build/modules/identitymap/libidentity_map.so"
+  "name": "mapping",
+  "loader": {
+    "name" : "native",
+    "entrypoint" : {
+      "module.path": "build/modules/identitymap/libidentity_map.so"
+    }
   },
   "args": [
     {
@@ -369,15 +381,14 @@ Add the MAC address of your SensorTag device and the device Id and key of the **
 ```
 
 #### Routing Configuration
-The following configuration ensures the following:
+The following configuration ensures the following routing between modules:
 
 * The **Logger** module receives and logs all messages.
-* The **SensorTag** module sends messages to both the **mapping** and **
-
-** modules.
+* The **SensorTag** module sends messages to both the **mapping** and **BLE Printer** modules.
 * The **mapping** module sends messages to the **IoTHub** module to be sent up to your IoT Hub.
 * The **IoTHub** module sends messages back to the **mapping** module.
-* The **mapping** module sends messages back to the **SensorTag** module.
+* The **mapping** module sends messages to the **BLEC2D** module.
+* The **BLEC2D** module sends messages back to the **Sensor Tag** module.
 
 ```json
 "links" : [
