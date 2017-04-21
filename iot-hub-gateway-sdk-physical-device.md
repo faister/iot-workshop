@@ -406,7 +406,7 @@ To run the sample, pass the path to the JSON configuration file to the **ble_gat
 
 ```
 cd ~pi/azure-iot-gateway-sdk/
-./build/samples/ble_gateway/ble_gateway ./samples/ble_gateway/src/gateway_sample.json
+sudo ./build/samples/ble_gateway/ble_gateway ./samples/ble_gateway/src/gateway_sample.json
 ```
 
 You may need to press the small button on the SensorTag device to make it discoverable before you run the sample.
