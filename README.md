@@ -42,7 +42,7 @@ To save time, please skip all sections to do with installing raspbian, cloning g
 
 ## Azure IoT Device Management Lab
 
-This lab will demonstrate the **Device Twins** and **Direct Methods** features and is available [here](https://github.com/Azure/azure-iot-sdks/tree/mvp_summit/c/serializer/samples/devicetwin_configupdate#how-to-update-configuration-and-reboot-an-iot-device-with-azure-iot-device-twins). 
+This lab will demonstrate the **Device Twins** and **Direct Methods** features and is available [here](https://github.com/iizotov/azure-iot-sdks/tree/mvp_summit/c/serializer/samples/devicetwin_configupdate#how-to-update-configuration-and-reboot-an-iot-device-with-azure-iot-device-twins). 
 
 The Device SDK GitHub repo has been cloned to `/home/pi/azure-iot-sdks/`. In the interest of time, **Step 1: Prerequisites**, **Step 2: Prepare Device** and the `git clone` step in **Step 3: Build and Run the Device Twins Sample** can be skipped.
 
