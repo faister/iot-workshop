@@ -176,7 +176,8 @@ Before running the sample, you need to verify that your Raspberry Pi 3 can conne
     ```
    
     > Note: You can list the GATT characteristics of the device again using the **list-attributes** command.
-9. You can now disconnect from the device using the **disconnect** command and then exit from the bluetooth shell using the **quit** command:
+9. Pair with the device by running **pair \<MAC address>**
+10. You can now disconnect from the device using the **disconnect** command and then exit from the bluetooth shell using the **quit** command:
    
     ```
     Attempting to disconnect from A0:E6:F8:B5:F6:00
