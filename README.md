@@ -66,10 +66,11 @@ The Azure IoT Gateway SDK GitHub repo has been cloned to `/home/pi/azure-iot-gat
 
 You are likely an overachiever, so we've included a few extra challenges!  Please make sure you complete the [Azure IoT Gateway SDK lab](iot-hub-gateway-sdk-physical-device.md) first.
 
-### Decode Messages in the Cloud
-- The SensorTag temperature telemetry requires decoding. The raw data comes as two unsigned 16 bit values, one for the die (ambience) temperature and one for the object temperature measured using the IR temperature sensor. You have two options to decode it:
- - Use Azure Stream Analytics [Javascript UDFs](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-javascript-user-defined-functions). Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) for ~~inspiration~~ code samples.
- - Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert temperature readings coming from the SensorTag and publish them to an Event Hub for further processing. Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) for ~~inspiration~~ code samples.
+### Decode Telemetry
+- The SensorTag temperature telemetry requires decoding. The raw data comes as two unsigned 16 bit values, one for the die (ambience) temperature and one for the object temperature measured using the IR temperature sensor. You have more than one option to decode it:
+   * Use Azure Stream Analytics [Javascript UDFs](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-javascript-user-defined-functions). Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) for ~~inspiration~~ code samples.
+   * Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert temperature readings coming from the SensorTag and publish them to an Event Hub for further processing. Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) for ~~inspiration~~ code samples.
+   * (Hardcore!) You can even do it on the gateway by building a new module in Node.JS. Refer to [Node.js Printer](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/nodejs_modules/printer.js) to understand how to consume messages and to [Node.js Simulated Device](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/nodejs_modules/sensor.js) to get an idea how to publish values. The flow can be be SensorTag -> mapper -> **Converter** -> IoTHub or SensorTag -> **Converter** -> mapper -> IoTHub. You will need to understand how the identity mapper and the IoTHub writer work, the documentation can be found [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/modules/iothub/devdoc/iothub.md) and [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/modules/identitymap/devdoc/identity_map.md)
 
 ### Create an Azure Stream Analytics Query
 - Create an Azure Stream Analytics query that selects all the data from your IoT Hub / Event Hub and outputs the results to Power BI, displaying aggregate metrics and sending emails or texts (e.g. when temperature exceeds 37 degrees for longer that 15 consecutive seconds). Experiment with the ASA windowing functions and Azure Logic Apps to achieve it.
@@ -89,8 +90,5 @@ You are likely an overachiever, so we've included a few extra challenges!  Pleas
 
 ### Combine Node.js Simulator With the SensorTag  
 - Add your SensorTag as a second device to the `gateway_sample_lin.json` file.
-
-### Decode Messages in the Gateway
-- The SensorTag message requires decoding. The raw data values read from this sensor are two unsigned 16 bit values, one for die (ambience) temperature and one for object temperature. Build a module to convert these values to a readable format in the gateway. Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) to seek answers. Refer to [Node.js Printer](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/nodejs_modules/printer.js) to understand how to consume messages and to [Node.js Simulated Device](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/nodejs_modules/sensor.js) to get an idea how to publish values. The flow can be be SensorTag -> mapper -> Converter -> IoTHub or SensorTag -> Converter -> mapper -> IoTHub. You will need to understand how the identity mapper and the IoTHub writer work, the documentation can be found [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/modules/iothub/devdoc/iothub.md) and [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/modules/identitymap/devdoc/identity_map.md)
 
 Have Fun!
