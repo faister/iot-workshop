@@ -50,7 +50,7 @@ The Device SDK GitHub repo has been cloned to `/home/pi/azure-iot-sdks/`. In the
 
 > Please make sure you set the correct timezone by running `sudo raspi-config`
 
-> Please make sure the time is synchronised by running `sudo apt-get -y install ntp ntpdate ; sudo service ntp stop; sudo ntpdate 0.ubuntu.pool.ntp.org; sudo service ntp start`
+> Please make sure the time is synchronised by running `sudo service ntp stop; sudo ntpdate 0.ubuntu.pool.ntp.org; sudo service ntp start`
 
 ## Azure IoT Gateway SDK Lab 
 
