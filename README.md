@@ -18,12 +18,12 @@ Day 1:
 - Azure IoT Suite: Level 300 intro 
 - Environment setup: azure subscription, SSH access to your Raspberry PI, set up prerequisites
 - Lab 1: Azure IoT Device Management
+- Lab 2: Azure IoT Gateway SDK
+- Coming up with problems to solve on Day 2
 
 Day 2:
-- Lab 2: Azure IoT Gateway SDK
-- Bonus Challenges
+- Hacking away!
 - Wrap-up
-- 🍕🍕🍕
 
 ## Getting Started
 Each group will be provided with a Raspberry Pi 3 running Raspbian Jessie, a Texas Instruments(TI) 
@@ -38,7 +38,9 @@ Your Raspberry Pis comes with a stock standard version of Raspbian, with the SDK
 - Device SDK: `/home/pi/azure-iot-sdks`
 - Gateway SDK: `/home/pi/azure-iot-gateway-sdk`
 
-To save time, please skip all sections to do with installing raspbian, cloning git repos and compiling SDKs. Feel free to [download the Raspbian image (warning - 2GB)](https://iothack.blob.core.windows.net/image/image8G.zip) we use here and write it to an SD card following [these instructions](https://www.raspberrypi.org/documentation/installation/installing-images/). 
+VNC server has been enabled, you can access you RPI's GUI using [VNC Viewer](https://www.realvnc.com/download/viewer/).
+
+To save time, please skip all sections to do with installing raspbian, cloning git repos and compiling SDKs. Feel free to [download the Raspbian image (warning - 16GB)](https://iothack.blob.core.windows.net/image/16G%2020170516.img) we use here and write it to an SD card following [these instructions](https://www.raspberrypi.org/documentation/installation/installing-images/). 
 
 ## Azure IoT Device Management Lab
 
@@ -65,13 +67,20 @@ The Azure IoT Gateway SDK GitHub repo has been cloned to `/home/pi/azure-iot-gat
 You are likely an overachiever, so we've included a few extra challenges!  Please make sure you complete the [Azure IoT Gateway SDK lab](iot-hub-gateway-sdk-physical-device.md) first.
 
 ### Decode Messages in the Cloud
-- The SensorTag message requires decoding. The raw data values read from this sensor are two unsigned 16 bit values, one for die (ambience) temperature and one for object temperature. Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert temperature readings coming from the SensorTag and publish them to an Event Hub for further processing. Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) to seek answers. 
+- The SensorTag temperature telemetry requires decoding. The raw data comes as two unsigned 16 bit values, one for the die (ambience) temperature and one for the object temperature measured using the IR temperature sensor. You have two options to decode it:
+1. Use Azure Stream Analytics [Javascript UDFs](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-javascript-user-defined-functions). Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) for ~~inspiration~~ code samples.
+1. Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert temperature readings coming from the SensorTag and publish them to an Event Hub for further processing. Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) for ~~inspiration~~ code samples.
 
 ### Create an Azure Stream Analytics Query
-- Create an Azure Stream Analytics query that selects all the data from your Event Hub and outputs the results to Power BI, displaying aggregate metrics and sending alert emails or texts (e.g. when temperature exceeds 37 degrees for longer that 15 consecutive seconds). Experiment with the ASA windowing functions and Azure Logic Apps to achieve it.
+- Create an Azure Stream Analytics query that selects all the data from your IoT Hub / Event Hub and outputs the results to Power BI, displaying aggregate metrics and sending emails or texts (e.g. when temperature exceeds 37 degrees for longer that 15 consecutive seconds). Experiment with the ASA windowing functions and Azure Logic Apps to achieve it.
+- How about making this threshold dynamic? Hint: store it as [reference data](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-use-reference-data) and use it in your queries.
+- How about closing the loop and sending Cloud-to-device messages when the temperature is above a threshold... say, lighting up the red LED on the Tag? Hint: connect ASA to an Event Hub or Storage Queue and create a triggered Azure Function to push out the C2D message. Don't forget to implement the logic for turning the light off!
 
 ### Create a Power BI Dashboard
 - Create a [Power BI](http://app.powerbi.com) Dashboard that visualizes your TI Sensor Tag data in creative ways.  Feel free to use any of the Power BI Custom Visuals available [here](https://store.office.com/en-us/appshome.aspx?productgroup=PowerBI). You can learn how to create Power BI Dashboards from a Stream Analytics Output [here](https://azure.microsoft.com/en-us/documentation/articles/stream-analytics-power-bi-dashboard/).
+
+### Time Series Insights (Preview)
+- Create a [Time Series Insights](https://azure.microsoft.com/en-us/services/time-series-insights/) environment and connect it to the IoT Hub
 
 > Note: the Gateway SDK has been compiled with support for Node.js modules. Please run the `nodejs_simple_sample` demo [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/README.md#linux-1) first. We recommend you create a new device for it. Due to a [bug](https://github.com/Azure/azure-iot-gateway-sdk/issues/226) the demo is likely to crash. Let's find a way around it, keep reading. 
 
