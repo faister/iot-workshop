@@ -68,8 +68,8 @@ You are likely an overachiever, so we've included a few extra challenges!  Pleas
 
 ### Decode Messages in the Cloud
 - The SensorTag temperature telemetry requires decoding. The raw data comes as two unsigned 16 bit values, one for the die (ambience) temperature and one for the object temperature measured using the IR temperature sensor. You have two options to decode it:
-1. Use Azure Stream Analytics [Javascript UDFs](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-javascript-user-defined-functions). Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) for ~~inspiration~~ code samples.
-1. Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert temperature readings coming from the SensorTag and publish them to an Event Hub for further processing. Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) for ~~inspiration~~ code samples.
+ - Use Azure Stream Analytics [Javascript UDFs](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-javascript-user-defined-functions). Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) for ~~inspiration~~ code samples.
+ - Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert temperature readings coming from the SensorTag and publish them to an Event Hub for further processing. Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) for ~~inspiration~~ code samples.
 
 ### Create an Azure Stream Analytics Query
 - Create an Azure Stream Analytics query that selects all the data from your IoT Hub / Event Hub and outputs the results to Power BI, displaying aggregate metrics and sending emails or texts (e.g. when temperature exceeds 37 degrees for longer that 15 consecutive seconds). Experiment with the ASA windowing functions and Azure Logic Apps to achieve it.
