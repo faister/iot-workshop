@@ -250,7 +250,9 @@ Assuming the gateway repository is located in the home folder, configure the log
 ```
 
 #### BLE Module Configuration
-The sample configuration for the BLE device assumes a Texas Instruments SensorTag device. Any standard BLE device that can operate as a GATT peripheral should work but you will need to update the GATT characteristic IDs and data (for write instructions). Add the MAC address of your SensorTag device: 
+The sample configuration for the BLE device assumes a Texas Instruments SensorTag 2.0 device. To understand the capabilities of the TI Tag better you can download the TI SensorTag app on your phone and explore. Any standard Bluetooth Low Energy (BLE) device that can operate as a GATT (Generic Attribute Profile) peripheral should work but you will need to update the GATT characteristic IDs and data (for write instructions). For the full GATT table for SensorTag 2.0 please refer to [this page](http://www.ti.com/ww/en/wireless_connectivity/sensortag/tearDown.html) - scroll the page all the way down. 
+
+Add the MAC address of your SensorTag device:
 
 ```json
 {
