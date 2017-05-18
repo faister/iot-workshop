@@ -67,7 +67,7 @@ The Azure IoT Gateway SDK GitHub repo has been cloned to `/home/pi/azure-iot-gat
 You are likely an overachiever, so we've included a few extra challenges!  Please make sure you complete the [Azure IoT Gateway SDK lab](iot-hub-gateway-sdk-physical-device.md) first.
 
 ### Decode Telemetry
-- The SensorTag temperature telemetry requires decoding. The raw data comes as two unsigned 16 bit values, one for the die (ambience) temperature and one for the object temperature measured using the IR temperature sensor. You have more than one option to decode it:
+- The SensorTag temperature telemetry requires decoding (i.e. conversion to JSON). The raw data comes as a 4-byte array consisting ot two unsigned 16 bit integers, one for the die (ambience) temperature and one for the object temperature measured using the IR temperature sensor. You have more than one option to decode it:
    * Wire up an Azure Function using your IoT Hub's Event Hub endpoint to convert temperature readings coming from the SensorTag and publish them to an Event Hub for further processing by Azure Stream Analytics. Use [this Google query](https://www.google.com.au/search?num=50&newwindow=1&espv=2&q=%22SCALE_LSB+sensortag%22) for ~~inspiration~~ code samples, [this blog](https://www.10thmagnitude.com/tech-blog/step-step-guide-creating-functions-within-azures-iot-hub/) for instructions and [this link](http://stackoverflow.com/questions/42003600/azure-iot-hub-eventhub-and-functions) for implementation details. Some more reading material [here](https://azure.microsoft.com/en-us/blog/how-to-use-azure-functions-with-iot-hub-message-routing/).
    * (Hardcore!) You can even do it on the gateway by building a new module in Node.JS. Refer to [Node.js Printer](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/nodejs_modules/printer.js) to understand how to consume messages and to [Node.js Simulated Device](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/nodejs_modules/sensor.js) to get an idea how to publish values. The flow can be be SensorTag -> mapper -> **Converter** -> IoTHub or SensorTag -> **Converter** -> mapper -> IoTHub. You will need to understand how the identity mapper and the IoTHub writer work, the documentation can be found [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/modules/iothub/devdoc/iothub.md) and [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/modules/identitymap/devdoc/identity_map.md). If you succeed at doing it then you can wrap the telemetry in a JSON message and connect Azure Stream Analytics directly to the IoT Hub.
 
@@ -81,6 +81,9 @@ You are likely an overachiever, so we've included a few extra challenges!  Pleas
 
 ### Time Series Insights (Preview)
 - Create a [Time Series Insights](https://azure.microsoft.com/en-us/services/time-series-insights/) environment and connect it to the IoT Hub
+
+### More Sensors! 
+- Using the [GATT table](http://www.ti.com/ww/en/wireless_connectivity/sensortag/tearDown.html) - and the TI SensorTag phone application explore what other sensors are available... feel free to update the gateway config to enable them (hint - this will likely to have an impact on your decoder function) 
 
 ### Bugs Happen!
 > Note: the Gateway SDK has been compiled with support for Node.js modules. Let's try to run the `nodejs_simple_sample` demo [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/README.md#linux-1) first. We recommend you create a new device for it. Due to a [bug](https://github.com/Azure/azure-iot-gateway-sdk/issues/226) the demo is likely to crash. Let's find a way around it.
