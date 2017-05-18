@@ -414,7 +414,7 @@ sudo ./build/samples/ble_gateway/ble_gateway ./samples/ble_gateway/src/gateway_s
 
 You may need to press the small button on the SensorTag device to make it discoverable before you run the sample.
 
-When you run the sample, you can use the [Device Explorer or iothub-explorer][lnk-explorer-tools] tool to monitor the messages the gateway forwards from the SensorTag device. 
+When you run the sample, you can use the [Device Explorer or iothub-explorer][lnk-explorer-tools] tool to monitor the messages the gateway forwards from the SensorTag device. Because the temperature data is sent as a 4-byte array consisting of two unsigned integers, you are likely to see some garbled characters instead of the temperature values. This is super common since it helps make telemetry messages super dense. This binary message should be decoded (converted to JSON for instance) either in the edge or in the cloud - you're welcome to try it in this workshop! It also highlights the fact that Azure IoT Hubs can consume telemetry in any format.
 
 ## Send Cloud-to-Device Messages
 The BLE module also supports sending instructions from Azure IoT Hub to the device. You can use the [Azure IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) or the [IoT Hub Explorer](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) to send JSON messages that the BLE gateway module passes on to the BLE device.
