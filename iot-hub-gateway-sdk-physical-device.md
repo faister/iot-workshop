@@ -175,7 +175,7 @@ Before running the sample, you need to verify that your Raspberry Pi 3 can conne
     [CHG] Device A0:E6:F8:B5:F6:00 Modalias: bluetooth:v000Dp0000d0110
     ```
    
-    > Note: You can list the GATT (Generic Attribute Profile) characteristics of the device again using the **list-attributes** command.     > For the full SensorTag 2.0 GATT table please refer to [this page]     (http://www.ti.com/ww/en/wireless_connectivity/sensortag/tearDown.html) - scroll the page all the way down.
+    > Note: You can list the GATT (Generic Attribute Profile) characteristics of the device again using the **list-attributes** command.     > For the full SensorTag 2.0 GATT table please refer to [this page](http://www.ti.com/ww/en/wireless_connectivity/sensortag/tearDown.html) - scroll it all the way down.
     > To gain a better understanding of all the sensors in your TI Tag feel free to install the TI SensorTag app on your phone and  explore.
 9. Pair with the device by running **pair \<MAC address>**
 10. You can now disconnect from the device using the **disconnect** command and then exit from the bluetooth shell using the **quit** command:
