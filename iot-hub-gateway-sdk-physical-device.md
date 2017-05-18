@@ -175,7 +175,8 @@ Before running the sample, you need to verify that your Raspberry Pi 3 can conne
     [CHG] Device A0:E6:F8:B5:F6:00 Modalias: bluetooth:v000Dp0000d0110
     ```
    
-    > Note: You can list the GATT characteristics of the device again using the **list-attributes** command.
+    > Note: You can list the GATT (Generic Attribute Profile) characteristics of the device again using the **list-attributes** command.     > For the full SensorTag 2.0 GATT table please refer to [this page]     (http://www.ti.com/ww/en/wireless_connectivity/sensortag/tearDown.html) - scroll the page all the way down.
+    > To gain a better understanding of all the sensors in your TI Tag feel free to install the TI SensorTag app on your phone and  explore.
 9. Pair with the device by running **pair \<MAC address>**
 10. You can now disconnect from the device using the **disconnect** command and then exit from the bluetooth shell using the **quit** command:
    
@@ -204,7 +205,7 @@ At the time of writing, the IoT Gateway SDK only supports gateways that use BLE 
 
 > Note: You can skip this step if you are using the provided SD card.
 
-Install dependancies for the Azure IoT Gateway SDK.
+Install dependencies for the Azure IoT Gateway SDK.
 
 ``` 
 sudo apt-get -y install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev libtool autoconf
@@ -250,7 +251,7 @@ Assuming the gateway repository is located in the home folder, configure the log
 ```
 
 #### BLE Module Configuration
-The sample configuration for the BLE device assumes a Texas Instruments SensorTag 2.0 device. To understand the capabilities of the TI Tag better you can download the TI SensorTag app on your phone and explore. Any standard Bluetooth Low Energy (BLE) device that can operate as a GATT (Generic Attribute Profile) peripheral should work but you will need to update the GATT characteristic IDs and data (for write instructions). For the full GATT table for SensorTag 2.0 please refer to [this page](http://www.ti.com/ww/en/wireless_connectivity/sensortag/tearDown.html) - scroll the page all the way down. 
+The sample configuration for the BLE device assumes you're using a Texas Instruments SensorTag 2.0 device. Any standard Bluetooth Low Energy (BLE) device that can operate as a GATT (Generic Attribute Profile) peripheral should work but you will need to update the GATT characteristic IDs and data (for write instructions). For the full GATT table for SensorTag 2.0 please refer to [this page](http://www.ti.com/ww/en/wireless_connectivity/sensortag/tearDown.html) - scroll the page all the way down. 
 
 Add the MAC address of your SensorTag device:
 
@@ -414,7 +415,7 @@ sudo ./build/samples/ble_gateway/ble_gateway ./samples/ble_gateway/src/gateway_s
 
 You may need to press the small button on the SensorTag device to make it discoverable before you run the sample.
 
-When you run the sample, you can use the [Device Explorer or iothub-explorer][lnk-explorer-tools] tool to monitor the messages the gateway forwards from the SensorTag device.
+When you run the sample, you can use the [Device Explorer or iothub-explorer][lnk-explorer-tools] tool to monitor the messages the gateway forwards from the SensorTag device. 
 
 ## Send Cloud-to-Device Messages
 The BLE module also supports sending instructions from Azure IoT Hub to the device. You can use the [Azure IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md) or the [IoT Hub Explorer](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) to send JSON messages that the BLE gateway module passes on to the BLE device.
