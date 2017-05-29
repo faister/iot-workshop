@@ -42,7 +42,7 @@ VNC server has been enabled, you can access you RPI's GUI using [VNC Viewer](htt
 
 To save time, please skip all sections to do with installing raspbian, cloning git repos and compiling SDKs. Feel free to [download the Raspbian image (warning - 16GB)](https://iothack.blob.core.windows.net/image/16G%2020170516.img) we use here and write it to an SD card following [these instructions](https://www.raspberrypi.org/documentation/installation/installing-images/). 
 
-## Azure IoT Device Management Lab
+## Lab 1: Azure IoT Device Management
 
 This lab will demonstrate the **Device Twins** and **Direct Methods** features and is available [here](https://github.com/iizotov/azure-iot-sdks/tree/mvp_summit/c/serializer/samples/devicetwin_configupdate#how-to-update-configuration-and-reboot-an-iot-device-with-azure-iot-device-twins). 
 
@@ -52,7 +52,7 @@ The Device SDK GitHub repo has been cloned to `/home/pi/azure-iot-sdks/`. In the
 
 > Please make sure the time is synchronised by running `sudo service ntp stop; sudo ntpdate 0.ubuntu.pool.ntp.org; sudo service ntp start`
 
-## Azure IoT Gateway SDK Lab 
+## Lab2: Azure IoT Gateway SDK 
 
 This lab will demonstrate the open source **Azure IoT Gateway SDK** using a Bluetooth Low Energy (BLE) Sensor Tag, Raspberry Pi and Node.js.
 
