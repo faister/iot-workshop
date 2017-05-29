@@ -459,5 +459,5 @@ To further explore the capabilities of IoT Hub, see:
 [lnk-raspbian]: https://www.raspberrypi.org/downloads/raspbian/
 
 
-[lnk-devguide]: iot-hub-devguide.md
+[lnk-devguide]: https://github.com/Microsoft/azure-docs/blob/master/articles/iot-hub/iot-hub-devguide.md
 [lnk-create-hub]: iot-hub-create-through-portal.md 
