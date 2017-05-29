@@ -52,7 +52,7 @@ The Device SDK GitHub repo has been cloned to `/home/pi/azure-iot-sdks/`. In the
 
 > Please make sure the time is synchronised by running `sudo service ntp stop; sudo ntpdate 0.ubuntu.pool.ntp.org; sudo service ntp start`
 
-## Lab2: Azure IoT Gateway SDK 
+## Lab 2: Azure IoT Gateway SDK 
 
 This lab will demonstrate the open source **Azure IoT Gateway SDK** using a Bluetooth Low Energy (BLE) Sensor Tag, Raspberry Pi and Node.js.
 
