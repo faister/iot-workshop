@@ -90,12 +90,14 @@ You are likely an overachiever, so we've included a few extra challenges!  Pleas
 
 ### IoT Hub Additional Reading
 - Cloud gateway for performing protocol adaptation before IoT Hub: [here](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-protocol-gateway) and [here](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
-
-- IoT Hub [message routing](https://azure.microsoft.com/en-au/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/)
-
--	Understand IoT Hub quotas, limits and throttling: [here](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-quotas-throttling) and [here](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-csharp-csharp-process-d2c)
-
+- [IoT Hub message routing](https://azure.microsoft.com/en-au/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/)
+-	[Understand IoT Hub quotas, limits and throttling](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-quotas-throttling) and [here]()
 - [Operations Monitoring](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-operations-monitoring)
+
+### Programmability, Consuming and Processing Telemetry in Code
+-	[Service Fabric IoT](https://github.com/Azure-Samples/service-fabric-dotnet-iot)
+- [Consuming and processing telemetry from Event Hub endpoints](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-programming-guide)
+- [Process IoT Hub telemetry using routes in .NET](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-csharp-csharp-process-d2c)
 
 ### Azure Stream Analytics (ASA) + Azure Machine Learning
 -	[Sample queries and query patterns](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-stream-analytics-query-patterns)
@@ -106,9 +108,5 @@ You are likely an overachiever, so we've included a few extra challenges!  Pleas
 ### Azure Functions
 -	[Bi-directional communication sample](https://github.com/Azure-Samples/iot-hub-node-ping/blob/master/iothubpingfunction/index.js)
 -	[Save messages to Azure Storage table](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-store-data-in-azure-table-storage)
-
-### Programmability
--	[Service Fabric IoT](https://github.com/Azure-Samples/service-fabric-dotnet-iot)
-- [Consuming and processing telemetry from Event Hub endpoints](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-programming-guide)
 
 Have Fun!
