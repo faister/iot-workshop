@@ -91,11 +91,11 @@ You are likely an overachiever, so we've included a few extra challenges!  Pleas
 ### OPC Publisher Module
 You can use the OPC Publisher module as a base for implementing your own Azure IoT Edge modules (instructions assume a windows host is used)
 1. Run `git clone –recursive https://github.com/Azure/iot-edge-opc-publisher.git`
-1. Install .NET Core 1.0 Preview 2 3131 – required to build the .NET Core Gateway/Edge module in OPC Publisher
--	[Download](https://go.microsoft.com/fwlink/?LinkID=827537) Windows 64 bit SDK Binary so that .NET Core 1.0 Preview 2 3131 can co-exist with the latest version of .NET Core which is required to run Azure IoT Edge OPC Proxy sample
--	Extract the zip onto a folder on C:\
-- When you compile the OPC Publisher module, reference dotnet.exe in the folder which you extracted, e.g., c:\dotnet
--	Other SDK binaries are available [here](https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.0.1-preview2-download.md), in case you need the SDK binaries for other OS
+1. Install .NET Core 1.0 Preview 2 3131 – required to build the .NET Core Gateway/Edge module in OPC Publisher:
+    -	[Download](https://go.microsoft.com/fwlink/?LinkID=827537) Windows 64 bit SDK Binary so that .NET Core 1.0 Preview 2 3131 can co-exist with the latest version of .NET Core which is required to run Azure IoT Edge OPC Proxy sample
+        -	Extract the zip onto a folder on C:\
+        - When you compile the OPC Publisher module, reference dotnet.exe in the folder which you extracted, e.g., c:\dotnet
+    -	Other SDK binaries are available [here](https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.0.1-preview2-download.md), in case you need the SDK binaries for other OS
 1. Install Docker – follow the instructions [here](https://docs.microsoft.com/en-au/azure/iot-suite/iot-suite-connected-factory-gateway-deployment)
 1. Configure the OPC Publisher module:
     - Modules are chained up in the `gatewayconfig.json` [file](https://github.com/Azure/iot-edge-opc-publisher/blob/master/src/GatewayApp.NetCore/gatewayconfig.json)
