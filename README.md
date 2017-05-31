@@ -82,11 +82,27 @@ You are likely an overachiever, so we've included a few extra challenges!  Pleas
 ### Time Series Insights (Preview)
 - Create a [Time Series Insights](https://azure.microsoft.com/en-us/services/time-series-insights/) environment and connect it to the IoT Hub
 
-### More Sensors! 
+### Enable More Sensors! 
 - Using the [GATT table](http://www.ti.com/ww/en/wireless_connectivity/sensortag/tearDown.html) - and the TI SensorTag phone application explore what other sensors are available... feel free to update the gateway config to enable them (hint - this will likely to have an impact on your decoder function) 
 
 ### Machine Learning? Easy!
 - Enable the humidity sensor and have your ASA (Azure Stream Analytics) job invoke a [weather prediction model](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-weather-forecast-machine-learning). In case you don't feel like enabling additional sensors (mind you, enabling a new sensor also requires modifications to the *decoder function*), you can always generate some pseudorandom humidity values and feed those along with the real temperature data to the ML model. Think of at least two services where you can generate humidity data.
+
+### OPC Publisher Module
+You can use the OPC Publisher module as a base for implementing your own Azure IoT Edge modules (instructions assume a windows host is used)
+1. Run `git clone –recursive https://github.com/Azure/iot-edge-opc-publisher.git`
+1. Install .NET Core 1.0 Preview 2 3131 – required to build the .NET Core Gateway/Edge module in OPC Publisher
+-	[Download](https://go.microsoft.com/fwlink/?LinkID=827537) Windows 64 bit SDK Binary so that .NET Core 1.0 Preview 2 3131 can co-exist with the latest version of .NET Core which is required to run Azure IoT Edge OPC Proxy sample
+-	Extract the zip onto a folder on C:\
+- When you compile the OPC Publisher module, reference dotnet.exe in the folder which you extracted, e.g., c:\dotnet
+-	Other SDK binaries are available [here](https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.0.1-preview2-download.md), in case you need the SDK binaries for other OS
+1. Install Docker – follow the instructions [here](https://docs.microsoft.com/en-au/azure/iot-suite/iot-suite-connected-factory-gateway-deployment)
+1. Configure the OPC Publisher module:
+    - Modules are chained up in the `gatewayconfig.json` [file](https://github.com/Azure/iot-edge-opc-publisher/blob/master/src/GatewayApp.NetCore/gatewayconfig.json)
+        - 2 modules; IoTHub module as Native C, and OPCUAPublisher module as .NET Core app
+        - You can chain up more modules written in the programming language of your choice. For starters, you could just standardize your modules as .NET Core apps 
+    - The main gateway entry/binary is written as a .NET Core app available [here](https://github.com/Azure/iot-edge-opc-publisher/blob/master/src/GatewayApp.NetCore/Program.cs)
+1.	Building the Docker container – review/modify the Dockerfile and follow instructions [here](https://github.com/Azure/iot-edge-opc-publisher)
 
 ### IoT Hub Additional Reading
 - Cloud gateway for performing protocol adaptation before IoT Hub: [here](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-protocol-gateway) and [here](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
