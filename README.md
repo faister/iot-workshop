@@ -85,11 +85,30 @@ You are likely an overachiever, so we've included a few extra challenges!  Pleas
 ### More Sensors! 
 - Using the [GATT table](http://www.ti.com/ww/en/wireless_connectivity/sensortag/tearDown.html) - and the TI SensorTag phone application explore what other sensors are available... feel free to update the gateway config to enable them (hint - this will likely to have an impact on your decoder function) 
 
-### Bugs Happen!
-> Note: the Gateway SDK has been compiled with support for Node.js modules. Let's try to run the `nodejs_simple_sample` demo [here](https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/nodejs_simple_sample/README.md#linux-1) first. We recommend you create a new device for it. Due to a [bug](https://github.com/Azure/azure-iot-gateway-sdk/issues/226) the demo is likely to crash. Let's find a way around it.
-- Let's fix it by replacing the `iothub_writer.js` module written in Node.js with a native device mapper and a native IoT Hub writer (used in the BLE demo). Edit the `gateway_sample_lin.json` file but don't forget to adjust the paths when adding new modules. Generate a random MAC address for the simulated device. 
+### Machine Learning? Easy!
+- Enable the humidity sensor and have your ASA (Azure Stream Analytics) job invoke a [weather prediction model](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-weather-forecast-machine-learning). In case you don't feel like enabling additional sensors (mind you, enabling a new sensor also requires modifications to the *decoder function*), you can always generate some pseudorandom humidity values and feed those along with the real temperature data to the ML model. Think of at least two services where you can generate humidity data.
 
-### Combine Node.js Simulator With the SensorTag  
-- Add your SensorTag as a second device to the `gateway_sample_lin.json` file.
+### IoT Hub Additional Reading
+- Cloud gateway for performing protocol adaptation before IoT Hub: [here](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-protocol-gateway) and [here](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
+
+- IoT Hub [message routing](https://azure.microsoft.com/en-au/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/)
+
+-	Understand IoT Hub quotas, limits and throttling: [here](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-quotas-throttling) and [here](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-csharp-csharp-process-d2c)
+
+- [Operations Monitoring](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-operations-monitoring)
+
+### Azure Stream Analytics (ASA) + Azure Machine Learning
+-	[Sample queries and query patterns](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-stream-analytics-query-patterns)
+-	[Weather forecast sample using ASA and Azure ML](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-weather-forecast-machine-learning)
+-	[Anomaly detection API](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
+-	[Real-time fraud detection](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-real-time-fraud-detection)
+
+### Azure Functions
+-	[Bi-directional communication sample](https://github.com/Azure-Samples/iot-hub-node-ping/blob/master/iothubpingfunction/index.js)
+-	[Save messages to Azure Storage table](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-store-data-in-azure-table-storage)
+
+### Programmability
+-	[Service Fabric IoT](https://github.com/Azure-Samples/service-fabric-dotnet-iot)
+- [Consuming and processing telemetry from Event Hub endpoints](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-programming-guide)
 
 Have Fun!
