@@ -40,7 +40,7 @@ Your Raspberry Pis comes with a stock standard version of Raspbian, with the SDK
 
 VNC server has been enabled, you can access you RPI's GUI using [VNC Viewer](https://www.realvnc.com/download/viewer/).
 
-To save time, please skip all sections to do with installing raspbian, cloning git repos and compiling SDKs. Feel free to [download the Raspbian image (warning - 8GB)](https://iizotov.blob.core.windows.net/downloads/image8G.img) we use here and write it to an SD card following [these instructions](https://www.raspberrypi.org/documentation/installation/installing-images/). In case you want to resize the image to make use of your (potentially larger than 8G) SD card, use the `raspi-config` utility or follow the [instructions here](https://pimylifeup.com/raspi-config-tool/).
+To save time, please skip all sections to do with installing raspbian, cloning git repos and compiling SDKs. Feel free to [download the Raspbian image (warning - 8GB)](https://iizotovshare.blob.core.windows.net/downloads/image8G.img) we use here and write it to an SD card following [these instructions](https://www.raspberrypi.org/documentation/installation/installing-images/). In case you want to resize the image to make use of your (potentially larger than 8G) SD card, use the `raspi-config` utility or follow the [instructions here](https://pimylifeup.com/raspi-config-tool/).
 
 ## Lab 1: Azure IoT Device Management
 
