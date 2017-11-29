@@ -1,0 +1,25 @@
+#!/bin/bash
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+RECIPIENTNAME="Mr User"
+RECIPIENTADDR=$1
+SENDER="\"Raspberry Pi\" <pingmerpi@gmail.com>"
+
+IP=$(ip addr show wlan0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+MAC=$(ip link show wlan0 | awk '/ether/ {print $2}')
+SSID=$(iwgetid -r)
+
+IP2=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f 1)
+MAC2=$(ip link show eth0 | awk '/ether/ {print $2}')
+
+TMPFILE=`mktemp`
+OLDFILE="/tmp/ip.txt"
+echo "To: \"$RECIPIENTNAME\" $RECIPIENTADDR" > $TMPFILE
+echo "From: $SENDER" >> $TMPFILE
+echo "Subject: $MAC -> $IP -> $SSID, $MAC2 -> $IP2" >> $TMPFILE
+if ! cmp -s $TMPFILE $OLDFILE ; then
+        cat $TMPFILE  | ssmtp $RECIPIENTADDR
+fi
+cp $TMPFILE $OLDFILE
+rm $TMPFILE
