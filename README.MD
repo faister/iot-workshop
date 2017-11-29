@@ -6,7 +6,7 @@ We are so glad to have you with us today. We put together this workshop to give 
 
 >Please note that the contents of this workshop have been updated to reflect the [latest changes](https://github.com/Azure/iot-edge) to IoT Edge. The old content is still available in [/v1](./v1/README.md)
 
-## Prerequisites and Course Materials
+## Prerequisites
 This is a technical workshop and you're expected to be comfortable writing and understanding code (we will chiefly use .NET Core). Also, you're expected to be comfortable around Linux, be able use SSH, bash, Visual Studio Code and know how to use text editors (such as **vi** or **nano**). Basic understanding of Docker Containers and Azure is essential, but not critical.
 
 Please make sure to complete the following prerequisites prior to coming to the workshop
@@ -21,13 +21,13 @@ Please make sure to complete the following prerequisites prior to coming to the 
 ## Agenda
 Day 1: 
 - Azure IoT Suite: Level 300 intro 
-- Lab 0: Environment setup: azure subscription, SSH access to your Raspberry PI, set up prerequisites
-- Lab 1: Deploy Simulated Device on IoT Edge
-- Lab 2: Develop and deploy a custom C# module to connect to Sensor Tag  on IoT Edge
+- [Lab 0: Environment setup: azure subscription, SSH access to your Raspberry PI, set up prerequisites](#lab0)
+- [Lab 1: Deploy Simulated Device on IoT Edge](#lab-1-deploy-simulated-device-on-iot-edge)
+- [Lab 2: Develop and deploy a custom C# module to connect to Sensor Tag  on IoT Edge](#lab-2-develop-and-deploy-a-custom-c-module-to-connect-to-sensor-tag--on-iot-edge)
 
 Day 2:
-- Lab 3: Deploy Azure Stream Analytics on IoT Edge
-- Time for guided experimentation
+- [Lab 3: Deploy Azure Stream Analytics on IoT Edge](#lab-3-deploy-azure-stream-analytics-on-iot-edge)
+- Time for guided experimentation, try some of the [challenges](#additional-challenges)
 - Wrap-up
 
 ## Getting Started
@@ -43,6 +43,7 @@ For your convenience we pre-baked an image that you can [download](https://iizot
 - Swap increased to 1G
 
 ## Lab 0: Environment Setup
+1. Make sure you've completed the [prerequisites](#prerequisites) before the workshop 
 1. Make sure you can access [Azure Portal](https://portal.azure.com/) and have an active Azure Subscription
     > speak to one of the proctors if you need an Azure Subscription or [activate](https://azure.microsoft.com/en-au/free/) a free trial yourself
 2. The procrotors will tell you the IP address of your Raspberry PI, make sure you can access it via SSH and VNC
@@ -87,7 +88,7 @@ For your convenience we pre-baked an image that you can [download](https://iizot
         ```bash
         python ~pi/sensortag.py --all -t 0.5 --redisip 127.0.0.1 --redischannel data <mac address>
         ```
-    * push the power button on your Sensor Tag and you should see telemetry being read off all sensors sequentially every 0.5 seconds and pushed into Redis running on `127.0.0.1`, channel `data`
+    * briefly push the power button on your Sensor Tag to initiate connection. Once established, you should see the telemetry being read from all sensors sequentially every 0.5 seconds and pushed into Redis running on `127.0.0.1`, channel `data`
     * (bonus challenge) to explore the json data pushed into the `data` channel in Redis, use `redis-cli` in a separate SSH session, issuing the following command: `SUBSCRIBE data`
     > If something's wrong, bounce bluetooth by running
 `sudo /etc/init.d/bluetooth restart`
@@ -100,17 +101,93 @@ For your convenience we pre-baked an image that you can [download](https://iizot
     * Install and start the IoT Edge runtime
     * Deploy a simulated device to IoT Edge
 2. Connect to the IoT Hub using either [Azure IoT Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/releases) or [iothub-explorer](https://github.com/Azure/iothub-explorer) and monitor the telemetry flowing through
-3. Emulate a container crash by noting down the id of the simulated device container: `sudo docker ps` and killing it:
+3. Emulate a container crash by noting down the id of one of the docker  containers by killing it
     ```bash
-    sudo docker kill <id>
+    sudo docker kill tempSensor
     ```
-    * observe how the IoT Edge Runtime heals itself by running `sudo watch docker ps`
-
+    * observe how the IoT Edge Runtime heals itself by running 
+    ```bash
+    sudo watch docker ps
+    ```
 ## Lab 2: Develop and deploy a custom C# module to connect to Sensor Tag  on IoT Edge
-TODO
+TODO, unfinished
+```
+use https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-csharp-module
+
+, skipping steps 7 - 12, use https://raw.githubusercontent.com/iizotov/iot-workshop/master/src/iotedgeblemodule/Program.cs instead
+
+change dockerfile to be based on the ARM image:
+```microsoft/dotnet:2.0.0-runtime-stretch-arm32v7```
+
+make sure ```<PackageReference Include="StackExchange.Redis" Version="1.2.6" />``` exists in the .cproj file
+
+grab the gateway ip address by running ```sudo docker network inspect --format='{{json .IPAM.Config}}' azure-iot-edge```
+
+When deploying specify the followinf module desired params (replace <ip> with the gateway ip address)
+
+{
+  "properties.desired": {
+    "redisIPAddress":"<ip>",
+    "redisChannelName": "data"
+  }
+}
+
+{
+  "routes": {
+    "route": "FROM /messages/modules/iotedgeblemodule/outputs/* INTO $upstream"
+  }
+}
+
+latch on to logs, change module parameters
+monitor messages
+
+```
+
+
 
 ## Lab 3: Deploy Azure Stream Analytics on IoT Edge
-TODO
+TODO, unfinished
+```
+
+use https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-edge
+
+create input input1
+create output alert
+create output cloud
+
+define query: 
+SELECT
+    *
+INTO
+    [cloud]
+FROM
+    [input1]
+
+SELECT
+    'temperature alert' as alert_message,
+    '30' as temp_ir_threshold,
+    temp_ir,
+    tag,
+    [timestamp]
+INTO
+    [alert]
+FROM
+    [input1]
+WHERE
+    [input1].[temp_ir] >= 30.0
+	
+Create anew storage account and a private container for the ASA job,
+Add a new ASA module to the edge, rename it to ASA or copy the auto-generated name (in which case adjust the routes below accordingly)
+
+{
+"routes": {                                              
+	"sensorToAsa":   "FROM /messages/modules/iotedgeblemodule/* INTO BrokeredEndpoint(\"/modules/{ASA}/inputs/input1\")",
+	"messagesToCloud": "FROM /messages/modules/{ASA}/outputs/cloud INTO $upstream",
+	"AlertsToCloud": "FROM /messages/modules/{ASA}/outputs/alert INTO $upstream"
+
+}
+} 
+```
 
 # Additional Challenges
 TODO
