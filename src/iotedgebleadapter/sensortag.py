@@ -476,9 +476,10 @@ def main():
 	parser.add_argument('--all', action='store_true', default=False)
 
 	arg = parser.parse_args(sys.argv[1:])
-
+	arg.host = arg.host.lower()
 	print('Connecting to ' + arg.host)
 	tag = SensorTag(arg.host)
+	print('Connected!')
 
 	print('Connecting to Redis ' + arg.redisip)
 	r = redis.StrictRedis(host=arg.redisip, port=arg.redisport,
@@ -537,12 +538,6 @@ def main():
 			data = {'tag': arg.host, 'accelerometer_x': val[0], 'accelerometer_y': val[1], 'accelerometer_z': val[2], 
 					'timestamp': datetime.datetime.utcnow().replace(microsecond=0).isoformat()}
 			r.publish(arg.redischannel, json.dumps(data))
-		if arg.keypress or arg.all:
-			val = tag.keypress.read()
-			print("KeyPress: ", val)
-			data = {'tag': arg.host, 'keypress': val[0], 
-					'timestamp': datetime.datetime.utcnow().replace(microsecond=0).isoformat()}
-			r.publish(arg.redischannel, json.dumps(data))
 		if arg.magnetometer or arg.all:
 			val = tag.magnetometer.read()
 			print("Magnetometer: ", val)
@@ -558,13 +553,13 @@ def main():
 		if (arg.light or arg.all) and tag.lightmeter is not None:
 			val = tag.lightmeter.read()
 			print("Light: ", val)
-			data = {'tag': arg.host, 'lightmeter': val[0], 
+			data = {'tag': arg.host, 'lightmeter': val, 
 					'timestamp': datetime.datetime.utcnow().replace(microsecond=0).isoformat()}
 			r.publish(arg.redischannel, json.dumps(data))
 		if arg.battery or arg.all:
 			val = tag.battery.read()
 			print("Battery: ", val)
-			data = {'tag': arg.host, 'battery_percent': val[0] * 1.0, 
+			data = {'tag': arg.host, 'battery_percent': val * 1.0, 
 					'timestamp': datetime.datetime.utcnow().replace(microsecond=0).isoformat()}
 			r.publish(arg.redischannel, json.dumps(data))
 		if counter >= arg.count and arg.count != 0:
