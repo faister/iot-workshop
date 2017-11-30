@@ -110,40 +110,54 @@ For your convenience we pre-baked an image that you can [download](https://iizot
     sudo watch docker ps
     ```
 ## Lab 2: Develop and deploy a custom C# module to connect to Sensor Tag  on IoT Edge
-TODO, unfinished
-```
-use https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-csharp-module
+Follow the [instructions](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-csharp-module) to create a custom C# module that will:
+* Subscribe to Redis instance listening for telemetry from your Sensor Tag. The Redis channel and IP address will be specified vi the [Module Twin](https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-modules#module-twins) capability
+* Push the telemetry to the module output, to be further routed to the IoT Hub via the IoT Edge [routes](https://docs.microsoft.com/en-us/azure/iot-edge/module-composition#specify-the-routes) mechanism
 
-, skipping steps 7 - 12, use https://raw.githubusercontent.com/iizotov/iot-workshop/master/src/iotedgeblemodule/Program.cs instead
+> **TODO! Insert Image**
 
-change dockerfile to be based on the ARM image:
-```microsoft/dotnet:2.0.0-runtime-stretch-arm32v7```
-
-make sure ```<PackageReference Include="StackExchange.Redis" Version="1.2.6" />``` exists in the .cproj file
-
-grab the gateway ip address by running ```sudo docker network inspect --format='{{json .IPAM.Config}}' azure-iot-edge```
-
-When deploying specify the followinf module desired params (replace <ip> with the gateway ip address)
-
-{
-  "properties.desired": {
-    "redisIPAddress":"<ip>",
-    "redisChannelName": "data"
-  }
-}
-
-{
-  "routes": {
-    "route": "FROM /messages/modules/iotedgeblemodule/outputs/* INTO $upstream"
-  }
-}
-
-latch on to logs, change module parameters
-monitor messages
-
-```
-
-
+In following the instructions, skip steps 7 - 12 in the *Create an IoT Edge module project* section and use the code from [this location](https://raw.githubusercontent.com/iizotov/iot-workshop/master/src/iotedgeblemodule/Program.cs) instead
+* For simplicity, use Docker Hub for storing your docker image
+* Since you'll be running this module on an ARM-based platform, change the `FROM ...` line in `/Docker/linux-x64/Dockerfile` to 
+    ```
+    FROM microsoft/dotnet:2.0.0-runtime-stretch-arm32v7
+    ```
+* Since your code will be interfacing with Redis, add a dependency on the `StackExchange.Redis` Nuget package to the `.cproj` file:
+    ```
+    <PackageReference Include="StackExchange.Redis" Version="1.2.6" />
+    ```
+* Before deploying the module, grab the Docker gateway IP address (that is, the address that your module will use to connect to Redis) by running
+    ```bash
+    sudo docker network inspect --format='{{json .IPAM.Config}}' azure-iot-edge
+    ```
+* When deploying the module, specify the following desired properties in the module twin (replace `<ip>` with the gateway ip address)
+    ```json
+    {
+        "properties.desired": {
+            "redisIPAddress":"<ip>",
+            "redisChannelName": "data"
+        }
+    }
+    ```
+* When deploying the module, specify the following route (replace `<module>` with the name of your module)
+    ```json
+    {
+        "routes": {
+            "route": "FROM /messages/modules/<module>/outputs/* INTO $upstream"
+        }
+    }
+    ```
+* Make sure the module is deployed correctly through Azure Portal and by running `sudo watch docker ps`
+* You can review the container's logs by running `sudo docker logs -f <container_id>`
+* Whilst following the logs, change the name of the Redis channel by submitting an update to  set of desired properties via Azure Portal
+* In a separate SSH session, launch the python script to start pushing telemetry messages into the Redis instance. Replace `<mac address>` with the MAC address of your Sentor Tag and `<ip>` with the Docker gateway ip address from one of the steps above:
+    ```bash
+    while true; do python ~pi/sensortag.py --all -t 0.5 --redisip <ip> <mac address> --redischannel data; sleep 1; done
+    ```
+    The infinite loop is used to reconnect when your Sensor Tag enters power saving mode. If you want to stop the script, hold Ctrl+C continuously 
+    > If something's wrong, bounce bluetooth by running
+`sudo /etc/init.d/bluetooth restart`
+* Connect to the IoT Hub using either [Azure IoT Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/releases) or [iothub-explorer](https://github.com/Azure/iothub-explorer) and monitor the telemetry flowing through
 
 ## Lab 3: Deploy Azure Stream Analytics on IoT Edge
 TODO, unfinished
