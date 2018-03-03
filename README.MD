@@ -10,7 +10,7 @@ We are so glad to have you with us today. We put together this workshop to give 
 This is a technical workshop and you're expected to be comfortable writing and understanding code (we will chiefly use .NET Core). Also, you're expected to be comfortable around Linux, be able use SSH, bash, Visual Studio Code and know how to use text editors (such as **vi** or **nano**). Basic understanding of Docker Containers and Azure is essential, but not critical.
 
 Please make sure to complete the following prerequisites prior to coming to the workshop
-- [Install](http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) PuTTY (Windows users only) or [Install](https://docs.microsoft.com/en-us/windows/wsl/install-win10) the Windows Subsystem for Linux which gives you full a nifty Bash shell.
+- [Install](http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) PuTTY (Windows users only) or [Install](https://docs.microsoft.com/en-us/windows/wsl/install-win10) the Windows Subsystem for Linux which gives you a nifty Bash shell.
 - [Download](https://github.com/Azure/azure-iot-sdk-csharp/releases) Azure IoT Device Explorer (Windows only) or [Install](https://github.com/Azure/iothub-explorer) iothub-explorer, a command line utility  
 - [Activate](https://azure.microsoft.com/en-au/free/) a free trial Azure subscription and familiarise yourself with the [Azure Portal](https://portal.azure.com/)
 - [Install](https://code.visualstudio.com/docs/setup/setup-overview) Visual Studio Code
@@ -31,10 +31,10 @@ Day 2:
 - Wrap-up
 
 ## Getting Started
-Each group will be provided with a Raspberry Pi 3 running [Raspbian Stretch with Desktop](https://www.raspberrypi.org/downloads/raspbian/), a Texas Instruments(TI) Bluetooth Low Energy (BLE) Sensor Tag, and an Azure Subscription.
+Each group will be provided with a Raspberry Pi 3 running [Raspbian Stretch with Desktop](https://www.raspberrypi.org/downloads/raspbian/), a Texas Instruments(TI) Bluetooth Low Energy (BLE) Sensor Tag.
 
 ## IMPORTANT NOTE
-You may experience limited bandwidth at the workshop venue. We don't take such chances so that we have downloaded required packages and updated Raspbian with the latest packages and binaries. If you encounter any step that instructs you download a package, or to pull down a Docker image, you do not need to do so because it is already pre-loaded onto your Raspberry Pi.
+You may experience limited bandwidth at the workshop venue. We don't take such chances so that we have downloaded required packages and updated Raspbian with the latest packages and binaries. If you encounter any step that instructs you download a package, or to pull down a Docker image, you do not need to do so because it is already pre-loaded onto your Raspberry Pi. Even the IoT Edge module images are pre-loaded so that you don't have to wait to download this off a potentially slow network.
 
 > Proctors are available to help you work through these workshops, answer questions or talk tech.
 
