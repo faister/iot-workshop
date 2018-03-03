@@ -39,9 +39,9 @@ You may experience limited bandwidth at the workshop venue. We don't take such c
 > Proctors are available to help you work through these workshops, answer questions or talk tech.
 
 ### What's in the Pre-baked Image
-For your convenience we pre-baked an image that you can [download](https://scrapyard.blob.core.windows.net/share/2018-02-03-IoTCloudWorkshopRPi.img) and try on your own Raspberry Pi. This image is based on stock standard [Raspbian Stretch with Desktop](https://www.raspberrypi.org/downloads/raspbian/) with the following tweaks:
+For your convenience we pre-baked an image that you can [download](https://scrapyard.blob.core.windows.net/share/2018-02-03-IoTCloudWorkshopRPi.7z) and try on your own Raspberry Pi. The image is compressed using [7-Zip](http://www.7-zip.org/) so extract the .img before flashing your micro SDHC, the requirement is at least 16GB. To flash the image, use [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/files/latest/download). This image is based on stock standard [Raspbian Stretch with Desktop](https://www.raspberrypi.org/downloads/raspbian/) with the following tweaks:
 - VNC server has been enabled, you can access you RPI's GUI using [VNC Viewer](https://www.realvnc.com/download/viewer/)
-- Crontab [script](./src/aux-files/mailip) notifying proctors when raspberry PIs receive or refresh an IP address to simplify the classroom process
+- Crontab [script](./src/aux-files/mailip) notifying proctors when raspberry PIs receive or refresh an IP address to simplify the classroom process. On your Raspberry Pi image, the script is located in /home/pi. Just modify the email address to your personal email.
 - SSH enabled
 - Swap increased to 1G
 
