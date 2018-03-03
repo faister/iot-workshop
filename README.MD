@@ -90,7 +90,9 @@ For your convenience we pre-baked an image that you can [download](https://scrap
        ```
        bluetoothctl
        scan on
-       (briefly push the power button of your Sensor Tag to initiate the Bluetooth connection with your Raspberry Pi, you will see a device with Sensor Tag name to it)
+       ```
+       > (briefly push the power button of your Sensor Tag to initiate the Bluetooth connection with your Raspberry Pi, you will see a device with Sensor Tag name to it, copy/record the MAC address)
+       ```
        scan off
        quit
        ```
@@ -158,6 +160,7 @@ In following the instructions, skip steps 7 - 12 in the *Create an IoT Edge modu
         }
     }
     ```
+* You may delete the tempSensor module deployed earlier because you do not need it in the following steps.
 * Make sure the module is deployed correctly through Azure Portal and by running `sudo watch docker ps`
 * You can review the container's logs by running `sudo docker logs -f <container_id>`
 * Whilst following the logs, change the name of the Redis channel by submitting an update to  set of desired properties via Azure Portal
