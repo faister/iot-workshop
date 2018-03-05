@@ -1,4 +1,4 @@
-# IoT Edge Hack Lab - IoT Cloud Workshop 2017 v2 - Australia 
+# IoT Edge Hack Lab - Microsoft IoT Cloud Workshop - Australia 
 
 Welcome to our IoT Cloud Workshop and choosing this hack lab. This content was originally developed along with Igor Izotov, a Technical Evangelist in Microsoft Australia.
 
